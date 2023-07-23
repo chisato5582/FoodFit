@@ -53,3 +53,7 @@
 * 間違えた問題の復習機能
 * 栄養検索(アプリ内で、栄養について自分で調べることができる)
 * 栄養検索の際のオートコンプリート機能
+
+
+## 画面遷移図
+https://www.figma.com/file/uKciynJuG35EdfLAmyhWqw/FoodFit?type=design&node-id=0%3A1&mode=design&t=sh54eIGW03hBvYtm-1
