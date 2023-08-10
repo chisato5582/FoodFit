@@ -8,7 +8,11 @@ module.exports = {
     './app/javascript/**/*.js'
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "button-color":"#B77878"
+      }
+    },
   },
   plugins: [require("daisyui")],
 }
