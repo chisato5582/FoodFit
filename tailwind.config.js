@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     './app/views/**/*.html.erb',
+    './app/views/**/_*.html.erb',
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
     './app/assets/stylesheets/**/*.sass',
@@ -10,7 +11,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "button-color":"#B77878"
+        "button-color":"#B77878",
+        "footer-color":"#897670"
       }
     },
   },
