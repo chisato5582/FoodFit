@@ -3,9 +3,9 @@
     <h2 class="text-black-400 text-5xl text-center pt-12">健康な食を学ぶアプリ</h2>
 
     <div>
-        <button class="text-white bg-button-color p-20 text-center rounded-xl py-2 w-3/12 mt-12 mb-5 mx-auto opacity-80 block">Login</button>
+        <%= button_to "Login", "#", method: :get, class: "text-white bg-button-color p-20 text-center rounded-xl py-2 w-3/12 mt-12 mb-5 mx-auto opacity-80 block", form_class: "inline-block" %>
     </div>
     <div>
-        <button class="text-white bg-button-color p-20 text-center rounded-xl py-2 w-3/12 my-5 mx-auto opacity-80 block">sign up</button>
+        <%= button_to "sign up", new_user_path, method: :get, class: "text-white bg-button-color p-20 text-center rounded-xl py-2 w-3/12 my-5 mx-auto opacity-80 block", form_class: "inline-block" %>
     </div>
 </div>
