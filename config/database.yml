@@ -16,6 +16,7 @@ default: &default
   username: root
   password: password
   host: localhost
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -53,3 +54,4 @@ production:
   database: FoodFit_production
   username: FoodFit
   password: <%= ENV["FOODFIT_DATABASE_PASSWORD"] %>
+  socket: /tmp/mysql.sock
