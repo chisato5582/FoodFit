@@ -1,0 +1,22 @@
+<div class="container">
+    <h1 class="float-left text-4xl text-button-color ml-24 mt-10">マイステータス</h1>
+
+    <table class="table text-center mt-20">
+        <tr>
+            <th scope="row">ユーザーネーム</th>
+        </tr>
+        <tr>
+            <td><%= current_user.name %></td>
+        </tr>
+        <tr>
+            <th scope="row">メールアドレス</th>
+        </tr>
+        <tr>
+            <td><%= current_user.email %></td>
+        </tr>
+        <tr>
+            <th scope="row">解いた問題数</th>
+        </tr>
+        
+    </table>
+</div>
