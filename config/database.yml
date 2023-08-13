@@ -54,4 +54,4 @@ production:
   database: FoodFit_production
   username: FoodFit
   password: <%= ENV["FOODFIT_DATABASE_PASSWORD"] %>
-  socket: /var/lib/mysql/mysql.sock
+  socket: /tmp/mysql.sock
