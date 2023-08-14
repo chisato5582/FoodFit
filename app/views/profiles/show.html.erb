@@ -2,20 +2,23 @@
     <h1 class="float-left text-4xl text-button-color ml-24 mt-10">マイステータス</h1>
 
     <table class="table text-center mt-20">
-        <tr>
+        <tr class="text-font-color text-2xl">
             <th scope="row">ユーザーネーム</th>
         </tr>
-        <tr>
+        <tr class="px-24">
             <td><%= current_user.name %></td>
         </tr>
-        <tr>
-            <th scope="row">メールアドレス</th>
+        <tr class="text-font-color text-2xl">
+            <th scope="row">ランク</th>
         </tr>
         <tr>
-            <td><%= current_user.email %></td>
+            <td></td>
         </tr>
-        <tr>
+        <tr class="text-font-color text-2xl">
             <th scope="row">解いた問題数</th>
+        </tr>
+        <tr>
+            <td></td>
         </tr>
         
     </table>

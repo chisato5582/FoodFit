@@ -18,9 +18,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.top-wrapper {
-    background-image: image-url("backimg.avif");
-    height: calc(100vh - 134px);
+.app-wrapper {
+    background-image: url("bgimg.jpg");
+    background-size: cover;
     position: relative;
     background-position: center;
 }

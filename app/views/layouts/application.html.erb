@@ -10,10 +10,12 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body class="app-wrapper">
     <%= render 'shared/flash_message' %>
 
+  <% if logged_in? %>
     <%= render  "shared/header" %>
+  <% end %> 
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>
