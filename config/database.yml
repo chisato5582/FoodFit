@@ -54,4 +54,4 @@ production:
   database: FoodFit_production
   username: FoodFit
   password: <%= ENV["FOODFIT_DATABASE_PASSWORD"] %>
-  socket: /tmp/mysql.sock
+  url: <%= ENV['JAWSDB_URL']&.sub(/\Amysql/, 'mysql2') %>
