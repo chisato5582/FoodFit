@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="clearfix">
+        <h1 class="mx-auto text-4xl text-button-color ml-32 pt-10">パスワード更新</h1>
+        <div class="flex justify-center">
+            <%= form_with model: @user, url: password_reset_path(@token), local: true do |f| %>
+
+                <div class="form-group text-3xl">
+                    <%= f.label :email %> : 
+                    <%= @user.email %>
+                </div>
+                <div class ='form-group py-5'>
+                    <%= f.label :password, "パスワード", class: "text-font-color text-3xl" %>
+                    <%= f.password_field :password, class: "form-control mb-3 py-3 px-10 mt-3 text-2xl rounded-full" %>
+                </div>
+                <div class="form-group py-5">
+                    <%= f.label :password_confirmation, "パスワード(確認)", class: "text-font-color text-3xl" %>
+                    <%= f.password_field :password_confirmation, class: "form-control mb-3 mb-3 py-3 px-10 mt-3 text-2xl rounded-full" %>
+                </div>
+                <div class="form-group py-5 text-center">
+                    <%= f.submit "更新", class: 'btn btn-primary bg-button-color hover:bg-hover-color text-button-font border-none rounded-full text-2xl py-5 px-10' %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
