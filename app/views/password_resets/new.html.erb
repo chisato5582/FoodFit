@@ -1,15 +1,18 @@
 <div class="container">
     <div class="clearfix">
-        <h1 class="mx-auto text-4xl text-button-color ml-32 pt-10">パスワードリセット申請</h1>
+        <h1 class="mx-auto text-4xl text-button-color ml-32 pt-10"><%= t '.title' %></h1>
         <p class="mx-auto ml-32 text-2xl mt-6">ご登録のメールアドレスにパスワード再設定リンクを送ります</p>
         <div class="flex justify-center form-gorup py-5">
             <%= form_with url: password_resets_path, local: true do |f| %>
                 <div class="form-group py-5">
-                    <%= f.label :email, "メールアドレス", class: "text-font-color text-3xl" %>
+                    <%= f.label :email, User.human_attribute_name(:email), class: "text-font-color text-3xl" %>
                     <%= f.email_field :email, class: "form-control mb-3 mb-3 py-3 px-10 mt-3 text-2xl rounded-full" %>
                 </div>
-                <%= f.submit "送信", class: 'btn btn-primary bg-button-color hover:bg-hover-color text-button-font border-none rounded-full text-2xl py-5 px-10' %>
+                <%= f.submit (t'defaults.send'), class: 'btn btn-primary bg-button-color hover:bg-hover-color text-button-font border-none rounded-full text-2xl py-5 px-10' %>
             <% end %>
+        </div>
+        <div class='text-center'>
+            <%= link_to (t'defaults.to_login_page'), login_path, class: "text-2xl" %>
         </div>
     </div>
 </div>

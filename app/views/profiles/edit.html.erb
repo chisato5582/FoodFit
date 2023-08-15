@@ -1,18 +1,18 @@
 <div class="container">
     <div class="clearfix">
-        <h1 class="mx-auto text-6xl text-button-color ml-32 mt-10">設定</h1>
+        <h1 class="mx-auto text-5xl text-button-color ml-32 mt-10"><%= t '.title' %></h1>
         <div class="flex justify-center">
             <%= form_with model: @user, url: profile_path, local: true do |f| %>
                 <div class ='form-group py-5'>
-                    <%= f.label :name, "ユーザーネーム", class: "text-font-color text-3xl" %>
+                    <%= f.label :name, class: "text-font-color text-3xl" %>
                     <%= f.text_field :name, class: "form-control mb-3 py-3 px-10 mt-3 text-2xl rounded-full" %>
                 </div>
                 <div class="form-group py-5">
-                    <%= f.label :email, "メールアドレス", class: "text-font-color text-3xl" %>
+                    <%= f.label :email, class: "text-font-color text-3xl" %>
                     <%= f.email_field :email, class: "form-control mb-3 mb-3 py-3 px-10 mt-3 text-2xl rounded-full" %>
                 </div>
                 <div class="form-group py-5 text-center">
-                    <%= f.submit "更新", class: 'btn btn-primary bg-button-color hover:bg-hover-color text-button-font border-none rounded-full text-2xl py-5 px-10' %>
+                    <%= f.submit (t'defaults.update'), class: 'btn btn-primary bg-button-color hover:bg-hover-color text-button-font border-none rounded-full text-2xl py-5 px-10' %>
                 </div>
             <% end %>
         </div>
