@@ -1,0 +1,43 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    register: '登録'
+    logout: 'ログアウト'
+    send: '送信'
+    update: '更新'
+    to_login_page: 'ログインページへ'
+  users:
+    new:
+      title: 'ユーザー登録'
+    create:
+      success: 'ユーザー登録が完了しました'
+      false: 'ユーザー登録に失敗しました'
+  user_sessions:
+    new:
+      to_register_page: '登録ページへ'
+      password_forgot: 'パスワードをお忘れの方はこちら'
+      title: 'ログイン'
+    create:
+      success: 'ログインしました'
+      false: 'ログインできませんでした'
+    destroy:
+      success: 'ログアウトしました'
+  profiles:
+    show:
+      title: 'マイステータス'
+    edit:
+      title: 'ユーザー設定'
+    update:
+      success: '登録内容を変更しました'
+      danger: '変更に失敗しました'
+  password_resets:
+    new:
+      title: 'パスワードリセット申請'
+    create:
+      success: 'パスワードリセット申請メールを送信しました'
+    update:
+      success: 'パスワードを変更しました'
+      false: 'パスワードの変更に失敗しました'
+    edit:
+      title: 'パスワード再設定'
+    

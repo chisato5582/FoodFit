@@ -1,9 +1,9 @@
 <div class="container">
-    <h1 class="float-left text-4xl text-button-color ml-24 mt-10">マイステータス</h1>
+    <h1 class="float-left text-4xl text-button-color ml-24 mt-10"><%= t '.title' %></h1>
 
     <table class="table text-center mt-20">
         <tr class="text-font-color text-2xl">
-            <th scope="row">ユーザーネーム</th>
+            <th scope="row"><%= User.human_attribute_name('name') %></th>
         </tr>
         <tr class="px-24">
             <td><%= current_user.name %></td>
