@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_action :require_login, only: %i[new create]
 
     def new
         @user = User.new
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
         if @user.save
             redirect_to root_path, notice: t('.success')
         else
-            # flash.now[:danger] = (t'.false')
+            flash.now[:danger] = (t'.false')
             render :new
         end
     end

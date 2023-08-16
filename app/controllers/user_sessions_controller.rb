@@ -1,4 +1,5 @@
 class UserSessionsController < ApplicationController
+    skip_before_action :require_login, only: %i[new create]
 
     def new; end
 
@@ -7,7 +8,7 @@ class UserSessionsController < ApplicationController
         if @user
             redirect_back_or_to profile_path, notice: t('.success')
         else
-            # flash.now[:alert] = t('.fail')
+            flash.now[:alert] = t('.fail')
             render :new
         end
     end

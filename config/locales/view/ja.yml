@@ -6,6 +6,9 @@ ja:
     send: '送信'
     update: '更新'
     to_login_page: 'ログインページへ'
+  tops:
+    index:
+      explanation: "健康な食を学ぶアプリ"
   users:
     new:
       title: 'ユーザー登録'
@@ -40,4 +43,7 @@ ja:
       false: 'パスワードの変更に失敗しました'
     edit:
       title: 'パスワード再設定'
+  question_tops:
+    index:
+      title: "何を学ぶ？"
     
