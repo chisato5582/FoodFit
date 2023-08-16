@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         if @user.save
             redirect_to root_path, notice: t('.success')
         else
-            flash.now[:danger] = (t'.false')
+            flash.now[:danger] = (t'.fail')
             render :new
         end
     end
