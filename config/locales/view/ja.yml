@@ -6,12 +6,18 @@ ja:
     send: '送信'
     update: '更新'
     to_login_page: 'ログインページへ'
+    message:
+      not_authorized: '権限がありません'
+      require_login: 'ログインしてください'
+  tops:
+    index:
+      explanation: "健康な食を学ぶアプリ"
   users:
     new:
       title: 'ユーザー登録'
     create:
       success: 'ユーザー登録が完了しました'
-      false: 'ユーザー登録に失敗しました'
+      fail: 'ユーザー登録に失敗しました'
   user_sessions:
     new:
       to_register_page: '登録ページへ'
@@ -19,7 +25,7 @@ ja:
       title: 'ログイン'
     create:
       success: 'ログインしました'
-      false: 'ログインできませんでした'
+      fail: 'ログインできませんでした'
     destroy:
       success: 'ログアウトしました'
   profiles:
@@ -37,7 +43,19 @@ ja:
       success: 'パスワードリセット申請メールを送信しました'
     update:
       success: 'パスワードを変更しました'
-      false: 'パスワードの変更に失敗しました'
+      fail: 'パスワードの変更に失敗しました'
     edit:
       title: 'パスワード再設定'
+  question_tops:
+    index:
+      title: "何を学ぶ？"
+  admin:
+    user_sessions:
+      new:
+        title: 'ログイン'
+      create:
+        success: 'ログインしました'
+        fail: 'ログインに失敗しました'
+        destroy: 'ログアウトしました'
+
     

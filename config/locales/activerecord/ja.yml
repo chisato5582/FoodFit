@@ -8,3 +8,9 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード（確認）'
+  enums:
+    user:
+      role:
+        general: '一般'
+        admin: '管理者'
+
