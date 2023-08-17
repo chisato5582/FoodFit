@@ -1,5 +1,5 @@
 class Choice < ApplicationRecord
-    enum correct: { incorrect: 0, correct: 1 }
+    enum correct: { correct: true, incorrect: false }
 
     belongs_to :question
     

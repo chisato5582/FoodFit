@@ -1,1 +1,19 @@
-管理者問題一覧ページ
+<div class="container">
+    <h1 class="text-3xl pt-10 ml-10"><%= t '.title' %></h1>
+    <div class="ml-10 mt-5 bg-blue-400 w-36 text-center">
+        <%= link_to t('.new_question'), new_admin_question_path %>
+    </div>
+    <div class="mt-20 ml-10">
+        <!-- 検索フォーム -->
+        <div>
+        </div>
+
+        <!-- 掲示板一覧 -->
+        <% if @question.present? %>
+            <%= render @question %>
+        <% else %>
+            <p><%= t('.no_result')%></p>
+        <% end %>
+    </div>
+
+</div>

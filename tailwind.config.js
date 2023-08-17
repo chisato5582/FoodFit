@@ -18,7 +18,8 @@ module.exports = {
         "text-color":"6c6363",
         "header-color":"#87AE8D",
         "flash-color":"#EDEBDD",
-        "font-color":"#9E616A"
+        "font-color":"#9E616A",
+        "admin-bg":"#C0B4B0"
       }
     },
   },
