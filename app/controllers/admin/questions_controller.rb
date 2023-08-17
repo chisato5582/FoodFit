@@ -2,11 +2,13 @@ class Admin::QuestionsController < Admin::BaseController
 
     def new
         @question = Question.new
+        @choice = @question.choices.new
     end
 
     def create
+        @question = Question.new(question_params)
         if @question.save
-            redirect_to admin_questions_path, success: "問題を作成しました"
+            redirect_to admin_question_path, success: "問題を作成しました"
         else
             flash.now[:danger] = "問題の作成に失敗しました"
             render :new
@@ -39,7 +41,7 @@ class Admin::QuestionsController < Admin::BaseController
     private
 
     def question_params
-        params.require(:question).permit(:content, :reason)
+        params.require(:question).permit(:content, :reason, choices_attributes: [:choice, :correct])
     end
 
 end

@@ -52,10 +52,20 @@ ja:
   admin:
     user_sessions:
       new:
-        title: 'ログイン'
+        title: '管理者ログイン'
       create:
         success: 'ログインしました'
         fail: 'ログインに失敗しました'
         destroy: 'ログアウトしました'
-
-    
+    questions:
+      index:
+        title: '(管理者)問題一覧'
+        no_result: '問題はありません'
+        new_question: '新規問題作成'
+      new:
+        title: '(管理者)問題新規作成ページ'
+        questions: '問題一覧ページへ'
+    choices:
+      create:
+        choice: '選択肢内容'
+        correct: '正誤'

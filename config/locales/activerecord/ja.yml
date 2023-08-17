@@ -8,9 +8,19 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード（確認）'
-  enums:
-    user:
-      role:
-        general: '一般'
-        admin: '管理者'
+      question:
+        content: '問題内容'
+        reason: '解説'
+      choice:
+        choice: '選択肢'
+        correct: '正誤'
+    enums:
+      user:
+        role:
+          general: '一般'
+          admin: '管理者'
+      choice:
+        correct:
+          incorrect: '不正解'
+          correct: '正解'
 

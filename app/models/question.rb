@@ -4,4 +4,6 @@ class Question < ApplicationRecord
 
     validates  :content, presence: true
     validates  :reason, presence: true
+
+    accepts_nested_attributes_for :choices, allow_destroy: true
 end

@@ -76,3 +76,4 @@ gem "sorcery", "~> 0.16.5"
 gem 'config'
 gem 'rails-i18n'
 gem 'byebug'
+gem 'enum_help' 
