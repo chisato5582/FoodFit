@@ -1,21 +1,21 @@
 <header>
-    <div class="container flex mx-auto mt-26 text-center bg-header-color opacity-80 text-white h-28 py-10">
-        <div class="mx-6">
+    <div class="container flex mx-auto mt-26 text-center bg-header-color opacity-80 text-white h-16 py-5 md:h-28 md:py-10">
+        <div class="mx-3 md:mx-6">
             <%= link_to "Mypage", profile_path, class: 'dropdown-item' %>
         </div>
-        <div class="mx-6">
+        <div class="mx-6mx-3 md:mx-6">
             <%= link_to "Test", question_tops_index_path, class: 'dropdown-item' %>
         </div>
-        <div class="mx-6">
+        <div class="mx-3 md:mx-6">
             <%= link_to "Search", "#", class: 'dropdown-item' %>
         </div>
-        <div class="mx-6">
+        <div class="mx-3 md:mx-6">
             <%= link_to "Setting", edit_profile_path, class: 'dropdown-item' %>
         </div>
-        <div class="mx-6">
+        <div class="mx-3 md:mx-6">
             <%= link_to "Rank", "#", class: 'dropdown-item' %>
         </div>
-        <div class="mx-6">
+        <div class="mx-3 md:mx-6">
             <%= button_to "Logout", logout_path, method: :delete %>
         </div>
     </div>

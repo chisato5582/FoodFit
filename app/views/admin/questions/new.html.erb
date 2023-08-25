@@ -17,49 +17,41 @@
             <div class="grid grid-cols-1 divide-y divide-black-200 divide-y-4">
                 <%= f.fields_for :choices do |choices_form| %>
                     <div>
-                        <%= choices_form.label :choice, class: "text-font-color text-3xl" %>
-                        <%= choices_form.text_field :choice,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
+                        <%= choices_form.label :choice1, class: "text-font-color text-3xl" %>
+                        <%= choices_form.text_field :choice1,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
                         <div class='form-group py-2'>
-                            <%= choices_form.label :correct, class: "text-font-color text-3xl" %>
-                            <%= choices_form.collection_radio_buttons :correct, [[1, "correct"], [0, "incorrect"]], :first, :last, class: "mb-3 py-2 px-10 mt-3 text-2xl" do |b| %>
-                                <%= b.label { b.radio_button + b.text } %>
-                            <% end %>
+                            <%= choices_form.label :correct1, class: "text-font-color text-3xl" %>
+                            <%= choices_form.check_box :correct1, { checked: @question.correct }, true, false %>
                         </div>
                     </div>
                 <% end %>
                 <%= f.fields_for :choices do |choices_form| %>
                     <div>
-                        <%= choices_form.label :choice, class: "text-font-color text-3xl" %>
-                        <%= choices_form.text_field :choice,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
+                        <%= choices_form.label :choice2, class: "text-font-color text-3xl" %>
+                        <%= choices_form.text_field :choice2,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
                         <div class='form-group py-2'>
-                            <%= choices_form.label :correct, class: "text-font-color text-3xl" %>
-                            <%= choices_form.collection_radio_buttons :correct, [[1, "correct"], [0, "incorrect"]], :first, :last, class: "mb-3 py-2 px-10 mt-3 text-2xl" do |b| %>
-                                <%= b.label { b.radio_button + b.text } %>
-                            <% end %>
+                            <%= choices_form.label :correct2, class: "text-font-color text-3xl" %>
+                            <%= choices_form.check_box :correct2, { checked: @question.correct }, true, false %>
                         </div>
                     </div>
                 <% end %>
                 <%= f.fields_for :choices do |choices_form| %>
                     <div>
-                        <%= choices_form.label :choice, class: "text-font-color text-3xl" %>
-                        <%= choices_form.text_field :choice,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
+                        <%= choices_form.label :choice3, class: "text-font-color text-3xl" %>
+                        <%= choices_form.text_field :choice3,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
                         <div class='form-group py-2'>
-                            <%= choices_form.label :correct, class: "text-font-color text-3xl" %>
-                            <%= choices_form.collection_radio_buttons :correct, [[1, "correct"], [0, "incorrect"]], :first, :last, class: "mb-3 py-2 px-10 mt-3 text-2xl" do |b| %>
-                                <%= b.label { b.radio_button + b.text } %>
-                            <% end %>
+                            <%= choices_form.label :correct3, class: "text-font-color text-3xl" %>
+                            <%= choices_form.check_box :correct3, { checked: @question.correct }, true, false %>
                         </div>
                     </div>
                 <% end %>
                 <%= f.fields_for :choices do |choices_form| %>
                     <div>
-                        <%= choices_form.label :choice, class: "text-font-color text-3xl" %>
-                        <%= choices_form.text_field :choice,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
+                        <%= choices_form.label :choice4, class: "text-font-color text-3xl" %>
+                        <%= choices_form.text_field :choice4,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
                         <div class='form-group py-2'>
-                            <%= choices_form.label :correct, class: "text-font-color text-3xl" %>
-                            <%= choices_form.collection_radio_buttons :correct, [[1, "correct"], [0, "incorrect"]], :first, :last, class: "mb-3 py-2 px-10 mt-3 text-2xl" do |b| %>
-                                <%= b.label { b.radio_button + b.text } %>
-                            <% end %>
+                            <%= choices_form.label :correct4, class: "text-font-color text-3xl" %>
+                            <%= choices_form.check_box :correct4, { checked: @question.correct }, true, false %>
                         </div>
                     </div>
                 <% end %>

@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     delete 'logout', to: 'user_sessions#destroy'
 
     resources :questions
-    resources :choices, only: %i[new create edit update destroy]
+    post 'questions/create', to: 'questions#create', as: :create_question
   end
 
 end
