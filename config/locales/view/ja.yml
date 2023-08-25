@@ -65,6 +65,8 @@ ja:
       new:
         title: '(管理者)問題新規作成ページ'
         questions: '問題一覧ページへ'
+      show:
+        title: '(管理者)問題詳細ページ'
     choices:
       create:
         choice: '選択肢内容'

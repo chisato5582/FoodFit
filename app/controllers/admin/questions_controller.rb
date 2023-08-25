@@ -1,14 +1,23 @@
 class Admin::QuestionsController < Admin::BaseController
 
     def new
-        @question = Question.new
-        @choice = @question.choices.new
+        @question = QuestionCreateForm.new
     end
 
     def create
-        @question = Question.new(question_params)
-        if @question.save
-            redirect_to admin_question_path, success: "問題を作成しました"
+        @question = QuestionCreateForm.new(question_params)
+
+        if @question.save_with_choices(
+            choice_choice1: params.dig(:question_create_form, :choices, :choice1),
+            choice_correct1: params.dig(:question_create_form, :choices, :correct1),
+            choice_choice2: params.dig(:question_create_form, :choices, :choice2),
+            choice_correct2: params.dig(:question_create_form, :choices, :correct2),
+            choice_choice3: params.dig(:question_create_form, :choices, :choice3),
+            choice_correct3: params.dig(:question_create_form, :choices, :correct3),
+            choice_choice4: params.dig(:question_create_form, :choices, :choice4),
+            choice_correct4: params.dig(:question_create_form, :choices, :correct4)
+        )
+            redirect_to admin_question_path(@question.question_id), success: "問題を作成しました"
         else
             flash.now[:danger] = "問題の作成に失敗しました"
             render :new
@@ -19,7 +28,7 @@ class Admin::QuestionsController < Admin::BaseController
 
     def show
         @question = Question.find(params[:id])
-        @choices = @question.choices
+        # @choices = @question.choices
     end
 
     def edit; end
@@ -41,7 +50,7 @@ class Admin::QuestionsController < Admin::BaseController
     private
 
     def question_params
-        params.require(:question).permit(:content, :reason, choices_attributes: [:choice, :correct])
+        params.require(:question_create_form).permit(:content, :reason, choices: [:choice1, :correct1, :choice2, :correct2, :choice3, :correct3, :choice4, :correct4])
+        # params.require(:question).permit(:content, :reason, :choice1, :correct1, :choice2, :correct2, :choice3, :correct3, :choice4, :correct4, :question_id)
     end
-
 end

@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_16_074745) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_17_145043) do
   create_table "choices", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "choice", null: false
-    t.integer "correct", null: false
+    t.boolean "correct", default: false, null: false
     t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
