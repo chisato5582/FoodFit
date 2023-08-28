@@ -9,11 +9,14 @@
         </div>
 
         <!-- 掲示板一覧 -->
-        <% if @question.present? %>
-            <%= render @question %>
-        <% else %>
-            <p><%= t('.no_result')%></p>
-        <% end %>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul class="list-unstyled">
+                        <%= render @question %>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>

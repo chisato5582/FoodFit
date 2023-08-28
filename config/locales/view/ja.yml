@@ -67,6 +67,8 @@ ja:
         questions: '問題一覧ページへ'
       show:
         title: '(管理者)問題詳細ページ'
+      edit:
+        title: '(管理者)問題編集ページ'
     choices:
       create:
         choice: '選択肢内容'
