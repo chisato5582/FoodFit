@@ -5,6 +5,7 @@ class QuestionCreateForm
     attr_accessor :content, :reason, :choice, :correct, :question_id
     attribute :content, :string
     attribute :reason, :string
+    attribute :type, :string
     attribute :choices, :string
     attribute :question_id, :integer
 
@@ -15,7 +16,7 @@ class QuestionCreateForm
         choice_choice3:, choice_correct3:,
         choice_choice4:, choice_correct4:
     )
-        @question = Question.create(content: content, reason: reason)
+        @question = Question.create(content: content, reason: reason, type: type)
         self.question_id = @question.id
         Choice.create!([
             { choice: choice_choice1, correct: choice_correct1 || false, question_id: @question.id },

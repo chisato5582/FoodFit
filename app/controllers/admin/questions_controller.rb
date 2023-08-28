@@ -30,6 +30,7 @@ class Admin::QuestionsController < Admin::BaseController
 
     def show
         @question = Question.find(params[:id])
+        # @choice = @question.choices
     end
 
     # def edit
@@ -58,7 +59,7 @@ class Admin::QuestionsController < Admin::BaseController
     private
 
     def question_params
-        params.require(:question_create_form).permit(:content, :reason, choices: [:choice1, :correct1, :choice2, :correct2, :choice3, :correct3, :choice4, :correct4])
+        params.require(:question_create_form).permit(:content, :reason, :type, choices: [:choice1, :correct1, :choice2, :correct2, :choice3, :correct3, :choice4, :correct4])
         # params.require(:question).permit(:content, :reason, :choice1, :correct1, :choice2, :correct2, :choice3, :correct3, :choice4, :correct4, :question_id)
     end
 end

@@ -1,4 +1,4 @@
-class Nutrition < Result
-    belongs_to :user
-    belongs_to :question
+class Nutrition < Question
+    # has_many :results, dependent: :destroy
+    # has_many :choices, dependent: :destroy
 end
