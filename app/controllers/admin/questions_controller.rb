@@ -24,14 +24,21 @@ class Admin::QuestionsController < Admin::BaseController
         end
     end
 
-    def index; end
+    def index
+        @question = Question.all
+    end
 
     def show
         @question = Question.find(params[:id])
-        # @choices = @question.choices
     end
 
-    def edit; end
+    # def edit
+    #     @question = Question.find(params[:id])
+    #     @edit_choice1 = @question.choices
+    #     @edit_choice2 = @question.choices
+    #     @edit_choice3 = @question.choices
+    #     @edit_choice4 = @question.choices
+    # end
 
     def update
         if @question.update(question_params)
@@ -43,8 +50,9 @@ class Admin::QuestionsController < Admin::BaseController
     end
 
     def destroy
+        @question = Question.find(params[:id])
         @question.destroy!
-        redirect_to admin_questions_path, success: "問題を削除しました"
+        redirect_to admin_questions_path, notice: "問題を削除しました"
     end
 
     private
