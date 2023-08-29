@@ -25,7 +25,7 @@ class Admin::QuestionsController < Admin::BaseController
     end
 
     def index
-        @question = Question.all
+        @questions = Question.all
     end
 
     def show
