@@ -32,4 +32,11 @@ Rails.application.routes.draw do
     post 'questions/create', to: 'questions#create', as: :create_question
   end
 
+  resources :questions do
+    collection do
+      get 'question_display'
+      post 'question_answer'
+    end
+  end
+
 end

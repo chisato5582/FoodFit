@@ -73,3 +73,7 @@ ja:
       create:
         choice: '選択肢内容'
         correct: '正誤'
+  questions:
+    question_display:
+      title: '栄養の必要性'
+
