@@ -3,6 +3,7 @@ module.exports = {
   content: [
     './app/views/**/*.html.erb',
     './app/views/**/_*.html.erb',
+    './app/views/**/*_*.html.erb',
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
     './app/assets/stylesheets/**/*.sass',
@@ -19,7 +20,8 @@ module.exports = {
         "header-color":"#87AE8D",
         "flash-color":"#EDEBDD",
         "font-color":"#9E616A",
-        "admin-bg":"#C0B4B0"
+        "admin-bg":"#C0B4B0",
+        "question-title":"#F2F2F2"
       }
     },
   },

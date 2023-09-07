@@ -24,3 +24,11 @@
     position: relative;
     background-position: center;
 }
+
+
+.compound-wrapper {
+    background-image: url("bgimg.jpg");
+    background-size: cover;
+    position: relative;
+    background-position: center;
+}
