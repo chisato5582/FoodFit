@@ -18,7 +18,6 @@ class QuestionsController < ApplicationController
 
     # クイズの回答処理アクション
     def question_answer
-        # @question = params[:id]
         @question = Question.find(params[:id])
 
         # ユーザーが選択した解答のID
@@ -35,7 +34,12 @@ class QuestionsController < ApplicationController
             current_user.results.create(question_id: @question.id, result: 0)
         end
         # 解説画面への遷移
-        redirect_to "#"
+        redirect_to explanation_questions_path(id: @question.id)
+    end
+
+    # 解説表示アクション
+    def explanation
+        @question = Question.find(params[:id])
     end
 
     private

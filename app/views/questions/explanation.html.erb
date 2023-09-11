@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="text-3xl pt-10 ml-10">
+        <h1 class="text-3xl pt-10 ml-10"><%= t '.title' %></h1>
+    </div>
+    <div>
+        <div>
+            <%= @question.reason %>
+        </div>
+        <div>
+            <%= button_to '次の問題へ', "#", class: 'btn btn-danger mx-1' %>
+        </div>
+    </div>
+</div>

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     collection do
       get 'question_display'
       post 'question_answer'
+      get 'explanation'
     end
   end
 
