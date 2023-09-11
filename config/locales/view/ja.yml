@@ -76,4 +76,6 @@ ja:
   questions:
     question_display:
       title: '栄養の必要性'
+    explanation:
+      title: '解説'
 
