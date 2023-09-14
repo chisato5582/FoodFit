@@ -34,9 +34,12 @@ Rails.application.routes.draw do
 
   resources :questions do
     collection do
-      get 'question_display'
-      post 'question_answer'
-      get 'explanation'
+      get 'nutrition_display'
+      post 'nutrition_answer'
+      get 'nutrition_explanation'
+      get 'compound_display'
+      post 'compound_answer'
+      get 'compound_explanation'
     end
   end
 

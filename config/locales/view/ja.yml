@@ -74,8 +74,12 @@ ja:
         choice: '選択肢内容'
         correct: '正誤'
   questions:
-    question_display:
+    nutrition_display:
       title: '栄養の必要性'
-    explanation:
+    nutrition_explanation:
+      title: '解説'
+    compound_display:
+      title: '栄養素問題'
+    compound_explanation:
       title: '解説'
 
