@@ -1,0 +1,31 @@
+<!--
+<div>
+    <div class="text-3xl pt-10 ml-10">
+        <h1 class="text-3xl pt-10 ml-10"><%= t '.title' %></h1>
+    </div>
+    <div class="w-20 h-20 rounded-x1">
+        <%= form_with(url: "/questions/nutrition_answer", method: "post", local: true) do |form| %>
+            <%= form.hidden_field :id, value: @question.id %>
+            <div>
+                <%= @question.content %>
+            </div>
+            <% @choices.each do |choice| %>
+                <label>
+                    <%= form.radio_button :selected_choice_id, choice.id %>
+                    <%= choice.choice %>
+                </label><br>
+            <% end %>
+            <div>
+                <%= submit_tag '回答', class: 'btn btn-danger mx-1' %>
+            </div>
+        <% end %>
+    </div>
+</div>
+-->
+<div class="container">
+    <div class="text-3xl pt-10 ml-10">
+        <h1 class="text-3xl pt-10 ml-10"><%= t '.title' %></h1>
+    </div>
+
+    <%= render partial: 'shared/display', locals: { question: @question, choices: @choices } %>
+</div>

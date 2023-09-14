@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_30_084002) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_131649) do
   create_table "choices", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "choice", null: false
     t.boolean "correct", default: false, null: false
@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_084002) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "result"
+    t.index ["question_id", "user_id"], name: "index_results_on_question_id_and_user_id", unique: true
     t.index ["question_id"], name: "index_results_on_question_id"
     t.index ["user_id"], name: "index_results_on_user_id"
   end
