@@ -11,12 +11,15 @@
   </head>
 
   <body class="app-wrapper">
-    <%= render 'shared/flash_message' %>
+  <%= render 'shared/flash_message' %>
 
   <% if logged_in? %>
     <%= render  "shared/header" %>
-  <% end %> 
+  <% else %>
+    <%= render "shared/before_login_header" %>
+  <% end %>  
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>
+
 </html>
