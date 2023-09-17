@@ -11,6 +11,7 @@
     "tailwindcss": "^3.3.3"
   },
   "scripts": {
+    "postinstall": "yarn build:css",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css --minify",
     "build:css:top": "tailwindcss -i ./app/assets/stylesheets/top.css -o ./app/assets/builds/top.css --minify",
