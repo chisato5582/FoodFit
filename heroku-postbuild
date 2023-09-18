@@ -1,0 +1,3 @@
+yarn build:css:compound
+yarn build:css:nutrition
+yarn build:css:top
