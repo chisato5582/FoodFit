@@ -1,3 +1,9 @@
+
+echo "Running build:css:compound"
 yarn build:css:compound
+
+echo "Running build:css:nutrition"
 yarn build:css:nutrition
+
+echo "Running build:css:top"
 yarn build:css:top
