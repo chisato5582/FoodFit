@@ -12,12 +12,11 @@
     "tailwindcss": "^3.3.3"
   },
   "scripts": {
-    "postinstall": "yarn build:css",
+    "postinstall": "yarn build",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css --minify",
     "build:css:top": "tailwindcss -i ./app/assets/stylesheets/top.css -o ./app/assets/builds/top.css --minify",
     "build:css:nutrition": "tailwindcss -i ./app/assets/stylesheets/nutrition.css -o ./app/assets/builds/nutrition.css --minify",
     "build:css:compound": "tailwindcss -i ./app/assets/stylesheets/compound.css -o ./app/assets/builds/compound.css --minify",
-    "build:css:all": "yarn build:css:top && yarn build:css:nutrition && yarn build:css:compound"
   }
 }
