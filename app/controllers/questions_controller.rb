@@ -1,6 +1,5 @@
 class QuestionsController < ApplicationController
-    # layout 'nutrition', only: [:nutrition_display, :nutrition_explanation]
-    # layout 'compound', only: [:compound_display, :compound_explanation]
+
     before_action :set_layout, only: [:nutrition_display, :nutrition_explanation, :compound_display, :compound_explanation]
 
 
@@ -8,10 +7,10 @@ class QuestionsController < ApplicationController
     # nutritionクイズ画面の表示アクション
     def nutrition_display
         user = current_user
-        @null_results = Question.where.not(id: Result.where(user_id: user.id).pluck(:question_id))
+        null_results = Question.where.not(id: Result.where(user_id: user.id).pluck(:question_id))
 
-        if @null_results.exists?
-            @question = @null_results.find_by(type: 'nutrition')
+        if null_results.exists?
+            @question = null_results.find_by(type: 'nutrition')
             if @question.present?
                 @choices = @question.choices
             else
@@ -57,10 +56,10 @@ class QuestionsController < ApplicationController
     # compoundクイズ画面の表示アクション
     def compound_display
         user = current_user
-        @null_results = Question.where.not(id: Result.where(user_id: user.id).pluck(:question_id))
+        null_results = Question.where.not(id: Result.where(user_id: user.id).pluck(:question_id))
 
-        if @null_results.exists?
-            @question = @null_results.find_by(type: 'compound')
+        if null_results.exists?
+            @question = null_results.find_by(type: 'compound')
             if @question.present?
                 @choices = @question.choices
             else
@@ -80,12 +79,12 @@ class QuestionsController < ApplicationController
         @question = Question.find(params[:id])
 
         # ユーザーが選択した解答のID
-        selected_choice_id = params[:selected_choice_id].to_i
+        selected_choice_ids = params[:selected_choice_ids].flatten.map(&:to_i)
         
         # 問題の正解のIDを取得
         correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
         
-        if correct_choice_ids.include?(selected_choice_id)
+        if  correct_choice_ids.sort == selected_choice_ids.sort
             flash[:success] = "正解です!"
             current_user.results.create(question_id: @question.id, result: 1)
         else
