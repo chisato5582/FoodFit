@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 .nutrition-wrapper {
+    min-height: 100vh;
     background-image: url("nutrition.jpg");
     background-size: cover;
     position: relative;
