@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="text-3xl pt-10 ml-10">
-        <h1 class="text-3xl pt-10 ml-10"><%= t '.title' %></h1>
+    <div class="pt-10 ml-10 text-question-title w-1/3">
+        <h1 class="text-1xl md:text-3xl py-5 ml-10 bg-question-titlebg text-center opacity-80 rounded-full"><%= t '.title' %></h1>
     </div>
 
     <%= render partial: 'shared/display', locals: { question: @question, choices: @choices } %>

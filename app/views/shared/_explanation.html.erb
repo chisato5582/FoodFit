@@ -1,9 +1,12 @@
-<div>
-    <div>
-        <%= @question.reason %>
-    </div>
-    <div>
-        <%= button_to '問題選択画面へ', question_tops_index_path, class: 'btn btn-danger mx-1', method: :get %>
-        <%= button_to '次の問題へ', nutrition_display_questions_path, class: 'btn btn-danger mx-1', method: :get %>
+
+<div class="flex items-center justify-center h-screen ">
+    <div class="bg-white px-5 py-10 w-3/5 opacity-60 text-center">
+        <div>
+            <%= @question.reason %>
+        </div>
+        <div class="flex justify-center mt-5">
+            <%= button_to '問題選択画面へ', question_tops_index_path, class: 'btn btn-danger mx-1 bg-button-color hover:bg-hover-color', method: :get %>
+            <%= button_to '次の問題へ', nutrition_display_questions_path, class: 'btn btn-danger mx-1 bg-button-color hover:bg-hover-color', method: :get %>
+        </div>
     </div>
 </div>

@@ -4,6 +4,7 @@
 
 
 .compound-wrapper {
+    min-height: 100vh;
     background-image: url("compound.jpg");
     background-size: cover;
     position: relative;
