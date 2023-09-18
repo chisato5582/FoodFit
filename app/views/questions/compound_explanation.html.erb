@@ -1,6 +1,16 @@
 <div class="container">
-    <div class="text-3xl pt-10 ml-10">
-        <h1 class="text-3xl pt-10 ml-10"><%= t '.title' %></h1>
+    <div class="text-3xl pt-10 ml-10 text-question-title w-1/3 rounded-sm">
+        <h1 class="text-1xl md:text-3xl py-5 ml-10 bg-question-titlebg text-center opacity-80 rounded-full"><%= t '.title' %></h1>
     </div>
-    <%= render partial: 'shared/explanation', locals: { question: @question } %>
+    <!--<%= render partial: 'shared/explanation', locals: { question: @question } %>-->
+    <div class="bg-white py-5 pl-10 mt-10 w-3/5 opacity-70 mx-auto">
+        <div>
+            <%= @question.reason %>
+        </div>
+        <div class="flex justify-center mt-5">
+            <%= button_to '問題選択画面へ', question_tops_index_path, class: 'btn btn-danger mx-1 bg-button-color hover:bg-hover-color', method: :get %>
+            <%= button_to '次の問題へ', compound_display_questions_path, class: 'btn btn-danger mx-1 bg-button-color hover:bg-hover-color', method: :get %>
+        </div>
+    </div>
+</div>
 </div>
