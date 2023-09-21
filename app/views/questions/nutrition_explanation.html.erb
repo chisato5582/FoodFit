@@ -1,24 +1,15 @@
-<!--
+
 <div class="container">
-    <div class="text-3xl pt-10 ml-10">
-        <h1 class="text-3xl pt-10 ml-10"><%= t '.title' %></h1>
+    <div class="pt-10 text-question-title rounded-sm mx-auto w-1/3">
+        <div class="text-1xl md:text-3xl py-5 bg-button-color text-center opacity-80 rounded-full">
+            <% if @result_value == "success" %>
+                正解！
+            <% else @result_value == "failure" %>
+                不正解
+            <% end %>
+        </div>
     </div>
     <div>
-        <div>
-            <%= @question.reason %>
-        </div>
-        <div>
-            <%= button_to '問題選択画面へ', question_tops_index_path, class: 'btn btn-danger mx-1', method: :get %>
-            <%= button_to '次の問題へ', nutrition_display_questions_path, class: 'btn btn-danger mx-1', method: :get %>
-        </div>
-    </div>
-</div>
--->
-<div>
-    <div class="text-3xl pt-10 ml-10 text-question-title w-1/3 rounded-sm">
-        <h1 class="text-1xl md:text-3xl py-5 ml-10 bg-question-titlebg text-center opacity-80 rounded-full"><%= t '.title' %></h1>
-    </div>
-    <div class="container">
-        <%= render partial: 'shared/explanation', locals: { question: @question } %>
+        <%= render partial: 'shared/explanation', locals: { question: @question, result: @result } %>
     </div>
 </div>

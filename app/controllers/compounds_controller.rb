@@ -33,10 +33,8 @@ class CompoundsController < ApplicationController
         correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
         
         if correct_choice_ids.sort == selected_choice_ids.sort
-            flash[:success] = "正解です!"
             current_user.results.create(question_id: @question.id, result: 1)
         else
-            flash[:error] = "不正解です"
             current_user.results.create(question_id: @question.id, result: 0)
         end
         redirect_to compound_explanation_questions_path(id: @question.id)
@@ -45,6 +43,8 @@ class CompoundsController < ApplicationController
     # 解説表示アクション
     def compound_explanation
         @question = Question.find(params[:id])
+        result_instance = current_user.results.find_by(question_id: @question.id)
+        @result_value = result_instance.result
     end
 
 
