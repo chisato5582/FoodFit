@@ -36,10 +36,10 @@ class QuestionsController < ApplicationController
         correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
         
         if correct_choice_ids.include?(selected_choice_id)
-            flash[:success] = "正解です!"
+            # flash[:success] = "正解です!"
             current_user.results.create(question_id: @question.id, result: 1)
         else
-            flash[:error] = "不正解です"
+            # flash[:error] = "不正解です"
             current_user.results.create(question_id: @question.id, result: 0)
         end
         redirect_to nutrition_explanation_questions_path(id: @question.id)
@@ -48,6 +48,8 @@ class QuestionsController < ApplicationController
     # 解説表示アクション
     def nutrition_explanation
         @question = Question.find(params[:id])
+        result_instance = current_user.results.find_by(question_id: @question.id)
+        @result_value = result_instance.result
     end
 
 
@@ -79,16 +81,20 @@ class QuestionsController < ApplicationController
         @question = Question.find(params[:id])
 
         # ユーザーが選択した解答のID
-        selected_choice_ids = params[:selected_choice_ids].flatten.map(&:to_i)
+        selected_choice_ids = params[:selected_choice_ids]
+
+        if selected_choice_ids.present?
+            selected_choice_ids = selected_choice_ids.flatten.map(&:to_i)
+        else
+            flash[:notice] = "選択してください"
+        end
         
         # 問題の正解のIDを取得
         correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
         
         if  correct_choice_ids.sort == selected_choice_ids.sort
-            flash[:success] = "正解です!"
             current_user.results.create(question_id: @question.id, result: 1)
         else
-            flash[:error] = "不正解です"
             current_user.results.create(question_id: @question.id, result: 0)
         end
         redirect_to compound_explanation_questions_path(id: @question.id)
@@ -97,6 +103,8 @@ class QuestionsController < ApplicationController
     # 解説表示アクション
     def compound_explanation
         @question = Question.find(params[:id])
+        result_instance = current_user.results.find_by(question_id: @question.id)
+        @result_value = result_instance.result
     end
 
     private

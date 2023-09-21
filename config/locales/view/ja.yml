@@ -75,11 +75,11 @@ ja:
         correct: '正誤'
   questions:
     nutrition_display:
-      title: '栄養の必要性'
+      title: '問題'
     nutrition_explanation:
       title: '解説'
     compound_display:
-      title: '栄養素問題'
+      title: '問題'
     compound_explanation:
       title: '解説'
 
