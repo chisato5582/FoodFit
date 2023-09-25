@@ -1,27 +1,58 @@
-<div class="container text-center mx-auto">
-    <h1 class="text-button-color text-3xl text-center pt-28 md:text-7xl lg:text-7xl">FoodFit</h1>
-    <h2 class="text-button-color text-1xl text-center pt-12 md:text-3xl lg:text-3xl"><%= t '.explanation' %></h2>
-    <!--
-    <div class="container mx-auto text-white text-center opacity-80 text-3xl pt-10 w-4/12">
-        <div>
-            <%= link_to "Login", login_path, method: :get, class: "bg-button-color hover:bg-hover-color rounded-xl my-5 block h-14", form_class: "inline-block" %>
+<div>
+    <div class="container text-center mx-auto">
+        <h1 class="text-button-color text-3xl text-center pt-28 md:text-7xl lg:text-7xl">FoodFit</h1>
+        <h2 class="text-button-color text-1xl text-center pt-12 md:text-3xl lg:text-3xl"><%= t '.explanation' %></h2>
+
+        <div class="mt-20">
+            <p class="text-2xl md:text-4xl font-medium">コンセプト</p>
+            <p class="text-sm md:text-xl mt-3">FoodFitをご覧いただきありがとうございます！</p>
+            <p class="text-sm md:text-xl mt-3">このアプリでは栄養について気軽に学べることを目標としています</p>
+            <p class="text-sm md:text-xl mt-3">栄養は、健康的に過ごす上で必要不可欠なものです</p>
+            <p class="text-sm md:text-xl mt-3">一度栄養の知識を身につけたら、それは一生の財産になります</p>
+            <p class="text-sm md:text-xl mt-3">一緒に楽しく栄養について学んでいきましょう！</p>
         </div>
-        <div>
-            <%= link_to "sign up", new_user_path, method: :get, class: "bg-button-color hover:bg-hover-color rounded-xl my-5 block h-14", form_class: "inline-block" %>
+    </div>
+
+    <div class="bg-top-exbg bg-opacity-50 mt-20 py-20 flex justify-center items-center">
+        <h2 class="text-2xl md:text-4xl text-center">〜FoodFitの使い方〜</p>
+
+        <div class="mt-20 font-light flex">
+            <div class="w-60 mr-10">
+                <h3 class="md:text-2xl text-base ml-3">まずはユーザー登録</h3>
+                <p class="text-xs md:text-base mt-5 font-midium">「新規登録」ボタンからユーザー登録を行います</p>
+            </div>
+            <div>
+                <%= image_tag "introduction1.png", size: "500x700", class: "mt-5" %>
+            </div>
+        </div>
+        <div class="mt-20 font-light flex">
+            <div class="w-60 mr-10">
+                <h3 class="md:text-2xl text-base">問題選択</h3>
+                <p class="text-xs md:text-base mt-5">ヘッダーのTestから、問題選択画面へ飛びます</p>
+                <p class="text-xs md:text-base">挑戦する問題の種類を選択し、問題へ進みます</p>
+            </div>
+            <div>
+                <%= image_tag "introduction2.png", size: "500x700", class: "mt-5" %>
+            </div>
+        </div>
+        <div class="mt-20 font-light flex">
+            <div class="w-60 mr-10">
+                <h3 class="md:text-2xl text-base">問題を解く</h3>
+                <p class="text-xs md:text-base mt-5">出題される問題を解いていきます</p>
+            </div>
+            <div>
+                <%= image_tag "introduction3.png", size: "500x700", class: "mt-5" %>
+            </div>
+        </div>
+        <div class="mt-16 flex justify-center">
+            <%= link_to "使ってみる", new_user_path, class: 'btn btn-danger mx-1 bg-button-color hover:bg-hover-color' %>
         </div>
     </div>
-    -->
-    <div class="mt-20">
-        <p class="text-3xl font-medium">コンセプト</p>
-        <p class="mt-3">FoodFitをご覧いただきありがとうございます！</p>
-        <p class="mt-3">このアプリでは栄養について気軽に学べることを目標としています</p>
-        <p class="mt-3">栄養は、健康的に過ごす上で必要不可欠なものです</p>
-        <p class="mt-3">一度栄養の知識を身につけたら、それは一生の財産になります</p>
-        <p class="mt-3">一緒に楽しく栄養について学んでいきましょう！</p>
-    </div>
-    <div>
-        <%= link_to "使ってみる", new_user_path, class: 'btn btn-danger mx-1 bg-button-color hover:bg-hover-color mt-10' %>
-    </div>
+
+
+
+        
+
 
 
 </div>

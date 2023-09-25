@@ -22,7 +22,8 @@ module.exports = {
         "font-color":"#9E616A",
         "admin-bg":"#C0B4B0",
         "question-title":"#F2F2F2",
-        "question-titlebg":"#6C6363"
+        "question-titlebg":"#6C6363",
+        "top-exbg":"#DC9797"
       },
       fontFamily: {
         'title': ['Impact']
