@@ -92,12 +92,12 @@ class QuestionsController < ApplicationController
         # 問題の正解のIDを取得
         correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
         
-        if  correct_choice_ids.sort == selected_choice_ids.sort
+        if correct_choice_ids.sort == (selected_choice_ids&.sort || [])
             current_user.results.create(question_id: @question.id, result: 1)
         else
             current_user.results.create(question_id: @question.id, result: 0)
         end
-        redirect_to compound_explanation_questions_path(id: @question.id)
+        redirect_to compound_display_questions_path(id: @question.id)
     end
 
     # 解説表示アクション
