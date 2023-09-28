@@ -33,13 +33,13 @@ class Admin::QuestionsController < Admin::BaseController
         # @choice = @question.choices
     end
 
-    # def edit
-    #     @question = Question.find(params[:id])
-    #     @edit_choice1 = @question.choices
-    #     @edit_choice2 = @question.choices
-    #     @edit_choice3 = @question.choices
-    #     @edit_choice4 = @question.choices
-    # end
+    def edit
+        @question = Question.find(params[:id])
+        @edit_choice1 = @question.choices.first
+        @edit_choice2 = @question.choices.second
+        @edit_choice3 = @question.choices.third
+        @edit_choice4 = @question.choices.fourth
+    end
 
     def update
         if @question.update(question_params)
