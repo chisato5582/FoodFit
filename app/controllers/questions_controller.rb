@@ -97,7 +97,7 @@ class QuestionsController < ApplicationController
         else
             current_user.results.create(question_id: @question.id, result: 0)
         end
-        redirect_to compound_display_questions_path(id: @question.id)
+        redirect_to compound_explanation_questions_path(id: @question.id)
     end
 
     # 解説表示アクション

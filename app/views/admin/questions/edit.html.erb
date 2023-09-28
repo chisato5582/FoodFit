@@ -14,45 +14,45 @@
                 <%= f.text_area :reason,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
             </div>
 
-            <div class="grid grid-cols-1 divide-y divide-black-200 divide-y-4">
+            <div class="grid grid-cols-1 divide-black-200 divide-y-4">
 
                     <div>
                         <%= f.label :choice1, class: "text-font-color text-3xl" %>
                         <%= f.text_field :choice1,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
                         <div class='form-group py-2'>
-                            <%= f.label :correct1, value: @edit_choice1.choice class: "text-font-color text-3xl" %>
-                            <%= @@edit_choice1.correct %>
+                            <%= f.label :correct1, class: "text-font-color text-3xl" do %>
+                                <%= @edit_choice1.choice %>
+                            <% end %>
                         </div>
                     </div>
-
-
                     <div>
                         <%= f.label :choice2, class: "text-font-color text-3xl" %>
                         <%= f.text_field :choice2,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
                         <div class='form-group py-2'>
                             <%= f.label :correct2, class: "text-font-color text-3xl" %>
-                            <%= f.check_box :correct2, { checked: @question.correct }, true, false %>
+                            <%= f.label :correct2, class: "text-font-color text-3xl" do %>
+                                <%= @edit_choice2.choice %>
+                            <% end %>
                         </div>
                     </div>
-
-
                     <div>
                         <%= f.label :choice3, class: "text-font-color text-3xl" %>
                         <%= f.text_field :choice3,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
                         <div class='form-group py-2'>
                             <%= f.label :correct3, class: "text-font-color text-3xl" %>
-                            <%= f.check_box :correct3, { checked: @question.correct }, true, false %>
+                            <%= f.label :correct3, class: "text-font-color text-3xl" do %>
+                                <%= @edit_choice3.choice %>
+                            <% end %>
                         </div>
-                    </div>
-
-
-                
+                    </div>         
                     <div>
                         <%= f.label :choice4, class: "text-font-color text-3xl" %>
                         <%= f.text_field :choice4,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
                         <div class='form-group py-2'>
                             <%= f.label :correct4, class: "text-font-color text-3xl" %>
-                            <%= f.check_box :correct4, { checked: @question.correct }, true, false %>
+                            <%= f.label :correct4, class: "text-font-color text-3xl" do %>
+                                <%= @edit_choice4.choice %>
+                            <% end %>
                         </div>
                     </div>
 
