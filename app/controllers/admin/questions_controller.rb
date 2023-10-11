@@ -30,20 +30,31 @@ class Admin::QuestionsController < Admin::BaseController
 
     def show
         @question = Question.find(params[:id])
-        # @choice = @question.choices
     end
 
     def edit
-        @question = Question.find(params[:id])
-        @edit_choice1 = @question.choices.first
-        @edit_choice2 = @question.choices.second
-        @edit_choice3 = @question.choices.third
-        @edit_choice4 = @question.choices.fourth
+        @question_form = QuestionCreateForm.new(question_id: params[:id])
+
+        @question_form.update_with_choices(
+            question_id: params[:id],
+            content: params.dig(:question_create_form, :content),
+            reason: params.dig(:question_create_form, :reason),
+            type: params.dig(:question_create_form, :type),
+            choice_choice1: params.dig(:question_create_form, :choices, :choice1),
+            choice_correct1: params.dig(:question_create_form, :choices, :correct1),
+            choice_choice2: params.dig(:question_create_form, :choices, :choice2),
+            choice_correct2: params.dig(:question_create_form, :choices, :correct2),
+            choice_choice3: params.dig(:question_create_form, :choices, :choice3),
+            choice_correct3: params.dig(:question_create_form, :choices, :correct3),
+            choice_choice4: params.dig(:question_create_form, :choices, :choice4),
+            choice_correct4: params.dig(:question_create_form, :choices, :correct4)
+        )
+
     end
 
     def update
-        if @question.update(question_params)
-            redirect_to admin_question_path, success: "問題を更新しました"
+        if @question_form.update(question_params)
+            redirect_to admin_question_path(@question_form), success: "問題を更新しました"
         else
             flash.now[:danger] = "問題の変更に失敗しました"
             render :edit
@@ -60,6 +71,5 @@ class Admin::QuestionsController < Admin::BaseController
 
     def question_params
         params.require(:question_create_form).permit(:content, :reason, :type, choices: [:choice1, :correct1, :choice2, :correct2, :choice3, :correct3, :choice4, :correct4])
-        # params.require(:question).permit(:content, :reason, :choice1, :correct1, :choice2, :correct2, :choice3, :correct3, :choice4, :correct4, :question_id)
     end
 end
