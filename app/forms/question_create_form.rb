@@ -27,4 +27,28 @@ class QuestionCreateForm
 
     end
 
+    def update_with_choices(
+      question_id:,
+      content:, reason:, type:,
+      choice_choice1:, choice_correct1:,
+      choice_choice2:, choice_correct2:,
+      choice_choice3:, choice_correct3:,
+      choice_choice4:, choice_correct4:
+  )
+      @question = Question.find(question_id)
+      @choice1 = @question.choices.first
+      @choice2 = @question.choices.second
+      @choice3 = @question.choices.third
+      @choice4 = @question.choices.fourth
+
+      @question.update(content: content, reason: reason, type: type)
+
+      @choice1.update(choice: choice_choice1, correct: choice_correct1 || false)
+      @choice2.update(choice: choice_choice2, correct: choice_correct2 || false)
+      @choice3.update(choice: choice_choice3, correct: choice_correct3 || false)
+      @choice4.update(choice: choice_choice4, correct: choice_correct4 || false)
+    end
+
+
+
 end

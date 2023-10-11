@@ -77,3 +77,8 @@ gem 'config'
 gem 'rails-i18n'
 gem 'byebug'
 gem 'enum_help' 
+
+gem 'rubocop', require:false
+gem 'rubocop-rails', require:false
+gem 'rubocop-performance', require: false
+gem 'rubocop-rspec', require: false
