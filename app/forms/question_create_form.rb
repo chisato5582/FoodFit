@@ -2,7 +2,7 @@ class QuestionCreateForm
     include ActiveModel::Model
     include ActiveModel::Attributes
 
-    attr_accessor :content, :reason, :choice, :correct, :question_id
+    attr_accessor :content, :reason, :type, :choice, :correct, :question_id
     attribute :content, :string
     attribute :reason, :string
     attribute :type, :string

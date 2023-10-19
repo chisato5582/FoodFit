@@ -60,7 +60,8 @@
 
 
 ## 画面遷移図
-https://www.figma.com/file/uKciynJuG35EdfLAmyhWqw/FoodFit?type=design&node-id=0%3A1&mode=design&t=sh54eIGW03hBvYtm-1
+[画面遷移図](
+https://www.figma.com/file/uKciynJuG35EdfLAmyhWqw/FoodFit?type=design&node-id=0%3A1&mode=design&t=sh54eIGW03hBvYtm-1)
 
 ## ER図
 [ER図](
