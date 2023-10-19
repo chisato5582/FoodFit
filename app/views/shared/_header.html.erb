@@ -1,10 +1,10 @@
 <header>
     <div class="w-full flex mx-auto mt-26 text-center bg-header-color opacity-80 text-white h-16 py-5 md:h-28 md:py-10">
         <div class="mx-3 md:mx-6">
-            <%= link_to "Mypage", profile_path, class: 'dropdown-item' %>
+            <%= link_to "マイページ", profile_path, class: 'dropdown-item hover:underline' %>
         </div>
         <div class="mx-6mx-3 md:mx-6">
-            <%= link_to "Test", question_tops_index_path, class: 'dropdown-item' %>
+            <%= link_to "テスト", question_tops_index_path, class: 'dropdown-item hover:underline' %>
         </div>
         <!--
         <div class="mx-3 md:mx-6">
@@ -12,7 +12,7 @@
         </div>
         -->
         <div class="mx-3 md:mx-6">
-            <%= link_to "Setting", edit_profile_path, class: 'dropdown-item' %>
+            <%= link_to "設定", edit_profile_path, class: 'dropdown-item hover:underline' %>
         </div>
         <!--
         <div class="mx-3 md:mx-6">
@@ -20,7 +20,7 @@
         </div>
         -->
         <div class="mx-3 md:mx-6">
-            <%= button_to "Logout", logout_path, method: :delete %>
+            <%= button_to "ログアウト", logout_path, method: :delete, class: ' hover:underline' %>
         </div>
     </div>
 </header>

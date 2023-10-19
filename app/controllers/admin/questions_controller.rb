@@ -1,4 +1,6 @@
 class Admin::QuestionsController < Admin::BaseController
+    # require 'active_support/core_ext/hash/keys'
+    require 'json'
 
     def new
         @question = QuestionCreateForm.new
@@ -33,7 +35,24 @@ class Admin::QuestionsController < Admin::BaseController
     end
 
     def edit
-        @question_form = QuestionCreateForm.new(question_id: params[:id])
+        edit_question = Question.find(params[:id])
+        @question_form = QuestionCreateForm.new(question_id: edit_question.id,
+            content: edit_question.content,
+            reason: edit_question.reason,
+            type: edit_question.type,
+            choices: {
+                choice1: edit_question.choices.first.choice,
+                correct1: edit_question.choices.first.correct,
+                choice2: edit_question.choices.second.choice,
+                correct2: edit_question.choices.second.correct,
+                choice3: edit_question.choices.third.choice,
+                correct3: edit_question.choices.third.correct,
+                choice4: edit_question.choices.fourth.choice,
+                correct4: edit_question.choices.fourth.correct
+            }
+        )
+        hash = eval(@question_form.choices)
+        @parsed_hash = JSON.parse(hash.to_json, symbolize_name: true)
 
         @question_form.update_with_choices(
             question_id: params[:id],
@@ -49,12 +68,37 @@ class Admin::QuestionsController < Admin::BaseController
             choice_choice4: params.dig(:question_create_form, :choices, :choice4),
             choice_correct4: params.dig(:question_create_form, :choices, :correct4)
         )
-
     end
 
     def update
-        if @question_form.update(question_params)
-            redirect_to admin_question_path(@question_form), success: "問題を更新しました"
+        @question = Question.find(params[:id])
+        @choice1 = @question.choices.first
+        @choice2 = @question.choices.second
+        @choice3 = @question.choices.third
+        @choice4 = @question.choices.fourth
+        # @question_form = QuestionCreateForm.new(
+        #     question_id: params[:id],
+        #     content: params.dig(:question_create_form, :content),
+        #     reason: params.dig(:question_create_form, :reason),
+        #     type: params.dig(:question_create_form, :type),
+        #     choices: {
+        #         choice1: params.dig(:question_create_form, :choices, :choice1),
+        #         correct1: params.dig(:question_create_form, :choices, :correct1),
+        #         choice2: params.dig(:question_create_form, :choices, :choice2),
+        #         correct2: params.dig(:question_create_form, :choices, :correct2),
+        #         choice3: params.dig(:question_create_form, :choices, :choice3),
+        #         correct3: params.dig(:question_create_form, :choices, :correct3),
+        #         choice4: params.dig(:question_create_form, :choices, :choice4),
+        #         correct4: params.dig(:question_create_form, :choices, :correct4)
+        #     }
+        # )
+
+        if @question.save &&
+            @choice1.save &&
+            @choice2.save &&
+            @choice3.save &&
+            @choice4.save
+            redirect_to admin_question_path(@question), success: "問題を更新しました"
         else
             flash.now[:danger] = "問題の変更に失敗しました"
             render :edit
