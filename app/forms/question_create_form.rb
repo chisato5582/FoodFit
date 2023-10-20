@@ -47,7 +47,38 @@ class QuestionCreateForm
       @choice2.update(choice: choice_choice2, correct: choice_correct2 || false)
       @choice3.update(choice: choice_choice3, correct: choice_correct3 || false)
       @choice4.update(choice: choice_choice4, correct: choice_correct4 || false)
+    
+    # if persisted? # 既存のデータがある場合
+    #     @question = Question.find(question_id)
+    #     @question.update(content: content, reason: reason, type: type)
+    # else
+    #     @question = Question.create(content: content, reason: reason, type: type)
+    #     self.question_id = @question.id
+    # end
+
+    # choices = [
+    #     { choice: choice_choice1, correct: choice_correct1 || false },
+    #     { choice: choice_choice2, correct: choice_correct2 || false },
+    #     { choice: choice_choice3, correct: choice_correct3 || false },
+    #     { choice: choice_choice4, correct: choice_correct4 || false }
+    # ]
+
+    # # 既存のデータがある場合は既存の選択肢を更新、ない場合は新しく作成
+    # choices.each_with_index do |choice_params, index|
+    #     choice = persisted? ? @question.choices[index] : Choice.new
+    #     choice.update(choice_params.merge(question_id: @question.id))
+    # end
+
+    
     end
+
+    # def save
+    #     return false if invalid?
+    #     if @question
+    #         photoes.each do |photo|
+    #         @post.images.build(photo: photo).save!
+    #     end
+    # end
 
 
 

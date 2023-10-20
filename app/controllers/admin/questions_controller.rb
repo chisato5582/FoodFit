@@ -71,27 +71,7 @@ class Admin::QuestionsController < Admin::BaseController
     end
 
     def update
-        @question = Question.find(params[:id])
-        @choice1 = @question.choices.first
-        @choice2 = @question.choices.second
-        @choice3 = @question.choices.third
-        @choice4 = @question.choices.fourth
-        # @question_form = QuestionCreateForm.new(
-        #     question_id: params[:id],
-        #     content: params.dig(:question_create_form, :content),
-        #     reason: params.dig(:question_create_form, :reason),
-        #     type: params.dig(:question_create_form, :type),
-        #     choices: {
-        #         choice1: params.dig(:question_create_form, :choices, :choice1),
-        #         correct1: params.dig(:question_create_form, :choices, :correct1),
-        #         choice2: params.dig(:question_create_form, :choices, :choice2),
-        #         correct2: params.dig(:question_create_form, :choices, :correct2),
-        #         choice3: params.dig(:question_create_form, :choices, :choice3),
-        #         correct3: params.dig(:question_create_form, :choices, :correct3),
-        #         choice4: params.dig(:question_create_form, :choices, :choice4),
-        #         correct4: params.dig(:question_create_form, :choices, :correct4)
-        #     }
-        # )
+        @question = QuestionCreateForm.new(question_params)
 
         if @question.save &&
             @choice1.save &&
