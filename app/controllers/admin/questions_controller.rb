@@ -53,8 +53,12 @@ class Admin::QuestionsController < Admin::BaseController
         )
         hash = eval(@question_form.choices)
         @parsed_hash = JSON.parse(hash.to_json, symbolize_name: true)
+    end
 
-        @question_form.update_with_choices(
+    def update
+        @question = QuestionCreateForm.new(question_params)
+
+        if  @question.update_with_choices(
             question_id: params[:id],
             content: params.dig(:question_create_form, :content),
             reason: params.dig(:question_create_form, :reason),
@@ -68,17 +72,7 @@ class Admin::QuestionsController < Admin::BaseController
             choice_choice4: params.dig(:question_create_form, :choices, :choice4),
             choice_correct4: params.dig(:question_create_form, :choices, :correct4)
         )
-    end
-
-    def update
-        @question = QuestionCreateForm.new(question_params)
-
-        if @question.save &&
-            @choice1.save &&
-            @choice2.save &&
-            @choice3.save &&
-            @choice4.save
-            redirect_to admin_question_path(@question), success: "問題を更新しました"
+        redirect_to admin_question_path(@question.question_id), success: "問題を更新しました"
         else
             flash.now[:danger] = "問題の変更に失敗しました"
             render :edit
