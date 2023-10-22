@@ -22,5 +22,19 @@
         <div class="mx-3 md:mx-6">
             <%= button_to "ログアウト", logout_path, method: :delete, class: ' hover:underline' %>
         </div>
+        <div class="ml-auto mr-10">
+            <nav>
+                <button id="button" type="button" class="fixed z-10 top-6 right-6">
+                    <i id="bars" class="fa-solid fa-bars fa-xl" style="color: #1f512b;"></i>
+                    <i id="xmark" class="fa-solid fa-xmark fa-xl hidden" style="color: #1f5129;"></i>
+                </button>
+                <ul id="menu" class="z-0 fixed top-0 left-0 w-full text-center bg-blue-500 text-white font-bold translate-x-full">
+                    <li class="p-3"><a href="#">マイページ</a></li>
+                    <li class="p-3"><a href="#">設定</a></li>
+                    <li class="p-3"><a href="#">ログアウト</a></li>
+                </ul>
+            </nav>
+            
+        </div>
     </div>
 </header>

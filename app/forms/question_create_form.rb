@@ -37,6 +37,7 @@ class QuestionCreateForm
         )
         # 該当のquestionとchoiceを取得する
         @question = Question.find(question_id)
+        # これがないとidが取得できずルーティングエラーになる
         self.question_id = @question.id
         @choice1 = @question.choices.first
         @choice2 = @question.choices.second
