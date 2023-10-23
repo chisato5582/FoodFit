@@ -5,11 +5,11 @@
             <%= form_with model: @user, url: profile_path, local: true do |f| %>
                 <div class ='form-group py-5'>
                     <%= f.label :name, class: "text-font-color text-1xl md:text-3xl" %>
-                    <%= f.text_field :name, class: "form-control mb-3 py-3 px-10 mt-3 md:text-2xl rounded-full" %>
+                    <%= f.text_field :name, class: "form-control mb-3 py-3 px-10 mt-3 md:text-2xl rounded-full dark:bg-white" %>
                 </div>
                 <div class="form-group py-5">
                     <%= f.label :email, class: "text-font-color text-1xl md:text-3xl" %>
-                    <%= f.email_field :email, class: "form-control mb-3 mb-3 py-3 px-10 mt-3 md:text-2xl rounded-full" %>
+                    <%= f.email_field :email, class: "form-control mb-3 mb-3 py-3 px-10 mt-3 md:text-2xl rounded-full dark:bg-white" %>
                 </div>
                 <div class="form-group py-5 text-center">
                     <%= f.submit (t'defaults.update'), class: 'btn btn-primary bg-button-color hover:bg-hover-color text-button-font border-none rounded-full py-5 px-10' %>

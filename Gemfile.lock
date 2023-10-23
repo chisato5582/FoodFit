@@ -136,6 +136,8 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
@@ -344,6 +346,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   enum_help
+  font-awesome-rails
   jbuilder
   jsbundling-rails
   letter_opener_web

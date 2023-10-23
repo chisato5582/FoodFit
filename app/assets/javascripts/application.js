@@ -11,3 +11,5 @@
 // about supported directives.
 //
 // Removed Sprockets Directives
+import '@fortawesome/fontawesome-free/js/all'
+import '../css/application.scss'
