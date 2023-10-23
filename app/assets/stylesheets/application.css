@@ -27,3 +27,7 @@
 }
 
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.button {
+    z-index: 10;
+}

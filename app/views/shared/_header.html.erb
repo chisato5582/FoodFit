@@ -1,9 +1,11 @@
 <header>
     <div class="w-full flex mx-auto mt-26 text-center bg-header-color opacity-80 text-white h-16 py-5 md:h-28 md:py-10">
         <div class="mx-3 md:mx-6">
-            <%= link_to "マイページ", profile_path, class: 'dropdown-item hover:underline' %>
+            <a href="<%= root_path %>">
+                <i class="fa-solid fa-utensils fa-xl hover:underline" style="color: #f9f8f0;"></i>
+            </a>
         </div>
-        <div class="mx-6mx-3 md:mx-6">
+        <div class="mx-3 md:mx-6">
             <%= link_to "テスト", question_tops_index_path, class: 'dropdown-item hover:underline' %>
         </div>
         <!--
@@ -11,30 +13,23 @@
             <%= link_to "Search", "#", class: 'dropdown-item' %>
         </div>
         -->
-        <div class="mx-3 md:mx-6">
-            <%= link_to "設定", edit_profile_path, class: 'dropdown-item hover:underline' %>
-        </div>
         <!--
         <div class="mx-3 md:mx-6">
             <%= link_to "Rank", "#", class: 'dropdown-item' %>
         </div>
         -->
-        <div class="mx-3 md:mx-6">
-            <%= button_to "ログアウト", logout_path, method: :delete, class: ' hover:underline' %>
-        </div>
         <div class="ml-auto mr-10">
             <nav>
                 <button id="button" type="button" class="fixed z-10">
                     <i id="bars" class="fa-solid fa-bars fa-xl" style="color: #1f512b;"></i>
-                    <i id="xmark" class="fa-solid fa-xmark fa-xl hidden" style="color: #1f5129;"></i>
+                    <i id="xmark" class="fa-solid fa-xmark fa-xl hidden" style="color: #582d09;"></i>
                 </button>
-                <ul id="menu" class="z-0 fixed top-0 left-0 w-full text-center bg-blue-500 text-white font-bold translate-x-full transition ease-linear">
-                    <li class="p-3"><a href="#">マイページ</a></li>
-                    <li class="p-3"><a href="#">設定</a></li>
-                    <li class="p-3"><a href="#">ログアウト</a></li>
+                <ul id="menu" class="z-0 fixed top-0 left-0 w-full text-center bg-footer-color text-white font-bold translate-x-full transition ease-linear">
+                    <li class="p-3"><%= link_to "マイページ", profile_path, class: 'hover:underline' %></li>
+                    <li class="p-3"><%= link_to "設定", edit_profile_path, class: 'hover:underline' %></li>
+                    <li class="p-3"><%= button_to "ログアウト", logout_path, method: :delete, class: 'hover:underline' %></li>
                 </ul>
             </nav>
-            
         </div>
     </div>
 </header>
