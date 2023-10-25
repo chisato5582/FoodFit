@@ -9,3 +9,15 @@
     position: relative;
     background-position: center;
 }
+
+.button:hover {
+    transition: all 150ms;
+    transform: scale(1.2);
+    transition-duration: 500ms;
+}
+
+.my-link:hover {
+    transition: all 300ms;
+    transform: scale(1.2);
+    transition-duration: 500ms;
+}
