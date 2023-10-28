@@ -1,5 +1,3 @@
 class ExternalPagesController < ApplicationController
-  def show
-    @uri = 
-  end
+  def show; end
 end
