@@ -44,6 +44,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :external_pages, only: %i[show]
+  resources :external_pages, only: %i[index]
 
 end
