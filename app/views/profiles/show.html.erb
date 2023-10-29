@@ -1,27 +1,29 @@
-<div class="container">
-    <h1 class="float-left text-2xl md:text-4xl text-button-color ml-10 md:ml-32 mt-10"><%= t '.title' %></h1>
+<div class="flex items-center justify-center">
+    <div class="container">
+        <h1 class="float-left text-2xl md:text-4xl text-button-color ml-10 md:ml-32 mt-10"><%= t '.title' %></h1>
 
-    <table class="table text-center mt-20 dark:text-black">
-        <tr class="text-font-color text-sm md:text-2xl">
-            <th scope="row"><%= User.human_attribute_name('name') %></th>
-        </tr>
-        <tr class="px-24 text-sm md:text-2xl">
-            <td><%= current_user.name %></td>
-        </tr>
-        <!--
-        <tr class="text-font-color text-sm md:text-2xl">
-            <th scope="row">ランク</th>
-        </tr>
-        <tr>
-            <td></td>
-        </tr>
-        <tr class="text-font-color text-sm md:text-2xl">
-            <th scope="row">解いた問題数</th>
-        </tr>
-        -->
-        <tr>
-            <td></td>
-        </tr>
-        
-    </table>
+        <table class="table text-center mt-20 dark:text-black">
+            <tr class="text-font-color text-sm md:text-2xl">
+                <th scope="row"><%= User.human_attribute_name('name') %></th>
+            </tr>
+            <tr class="px-24 text-sm md:text-2xl">
+                <td><%= current_user.name %></td>
+            </tr>
+            <!--
+            <tr class="text-font-color text-sm md:text-2xl">
+                <th scope="row">ランク</th>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr class="text-font-color text-sm md:text-2xl">
+                <th scope="row">解いた問題数</th>
+            </tr>
+            -->
+            <tr>
+                <td></td>
+            </tr>
+            
+        </table>
+    </div>
 </div>
