@@ -28,18 +28,23 @@ class QuestionsController < ApplicationController
     # クイズの回答処理アクション
     def nutrition_answer
         @question = Question.find(params[:id])
+        @choices = @question.choices
 
-        # ユーザーが選択した解答のID
-        selected_choice_id = params[:selected_choice_id].to_i
+        if params.key?(:selected_choice_id)
+            # ユーザーが選択した解答のID
+            selected_choice_id = params[:selected_choice_id].to_i
+        else
+            flash.now[:notice] = "選択してください"
+            render :nutrition_display
+            return
+        end
         
         # 問題の正解のIDを取得
-        correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
+        correct_choice_id = @question.choices.where(correct: true).pluck(:id)
         
-        if correct_choice_ids.include?(selected_choice_id)
-            # flash[:success] = "正解です!"
+        if correct_choice_id.include?(selected_choice_id)
             current_user.results.create(question_id: @question.id, result: 1)
         else
-            # flash[:error] = "不正解です"
             current_user.results.create(question_id: @question.id, result: 0)
         end
         redirect_to nutrition_explanation_questions_path(id: @question.id)
@@ -79,6 +84,7 @@ class QuestionsController < ApplicationController
     # クイズの回答処理アクション
     def compound_answer
         @question = Question.find(params[:id])
+        @choices = @question.choices
 
         # ユーザーが選択した解答のID
         selected_choice_ids = params[:selected_choice_ids]
@@ -86,7 +92,9 @@ class QuestionsController < ApplicationController
         if selected_choice_ids.present?
             selected_choice_ids = selected_choice_ids.flatten.map(&:to_i)
         else
-            flash[:notice] = "選択してください"
+            flash.now[:notice] = "選択してください"
+            render :compound_display
+            return
         end
         
         # 問題の正解のIDを取得
