@@ -26,7 +26,7 @@
     background-position: center;
 }
 
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/css/fontawesome';
 
 .button:hover {
     transition: all 150ms;
