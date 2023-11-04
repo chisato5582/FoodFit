@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .compound-wrapper {
     min-height: 100vh;
     background-image: url("compound.jpg");
@@ -23,3 +22,5 @@
     transform: scale(1.2);
     transition-duration: 500ms;
 }
+
+@import '~@fortawesome/fontawesome-free/css/fontawesome';

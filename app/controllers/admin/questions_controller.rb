@@ -39,6 +39,7 @@ class Admin::QuestionsController < Admin::BaseController
         @question_form = QuestionCreateForm.new(question_id: edit_question.id,
             content: edit_question.content,
             reason: edit_question.reason,
+            hint: edit_question.hint,
             type: edit_question.type,
             choices: {
                 choice1: edit_question.choices.first.choice,
@@ -62,6 +63,7 @@ class Admin::QuestionsController < Admin::BaseController
             question_id: params[:id],
             content: params.dig(:question_create_form, :content),
             reason: params.dig(:question_create_form, :reason),
+            hint: params.dig(:question_create_form, :hint),
             type: params.dig(:question_create_form, :type),
             choice_choice1: params.dig(:question_create_form, :choices, :choice1),
             choice_correct1: params.dig(:question_create_form, :choices, :correct1),
@@ -88,6 +90,6 @@ class Admin::QuestionsController < Admin::BaseController
     private
 
     def question_params
-        params.require(:question_create_form).permit(:content, :reason, :type, choices: [:choice1, :correct1, :choice2, :correct2, :choice3, :correct3, :choice4, :correct4])
+        params.require(:question_create_form).permit(:content, :reason, :hint, :type, choices: [:choice1, :correct1, :choice2, :correct2, :choice3, :correct3, :choice4, :correct4])
     end
 end
