@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_31_143752) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type", null: false
-    t.integer "hint"
+    t.string "hint"
   end
 
   create_table "results", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
