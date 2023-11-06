@@ -6,4 +6,7 @@ class Result < ApplicationRecord
 
     validates  :result, presence: true
     validates :question_id, uniqueness: { scope: :user_id }
+
+    # result がfalse かを判定するscope
+    scope :incorrect, -> { where(result: false) }
 end
