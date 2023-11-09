@@ -5,4 +5,6 @@ class Question < ApplicationRecord
     validates  :content, presence: true
     validates  :reason, presence: true
 
+    scope :incorrect, -> { joins(:results).where(results: { result: false }) }
+
 end

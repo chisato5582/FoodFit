@@ -30,6 +30,7 @@ class QuestionsController < ApplicationController
         @question = Question.find(params[:id])
         @choices = @question.choices
 
+        # 未回答の場合の処理
         if params.key?(:selected_choice_id)
             # ユーザーが選択した解答のID
             selected_choice_id = params[:selected_choice_id].to_i
@@ -117,6 +118,7 @@ class QuestionsController < ApplicationController
 
     private
 
+    # 問題の種類によってレイアウトを変更する
     def set_layout
         case action_name
         when 'nutrition_display', 'nutrition_explanation'

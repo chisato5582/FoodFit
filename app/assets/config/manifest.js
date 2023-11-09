@@ -7,3 +7,5 @@
 //= link compound.js
 //= link top.css
 //= link top.js
+//= link wrong.css
+//= link wrong.js

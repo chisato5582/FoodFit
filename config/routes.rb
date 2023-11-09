@@ -44,6 +44,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :results do
+    collection do
+      get 'wrong_display'
+      get 'wrong_explanation'
+    end
+  end
+  post '/questions/wrong_answer', to: 'questions#wrong_answer'
+
   resources :external_pages, only: %i[index]
 
 end

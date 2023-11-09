@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.wrong-wrapper {
+    min-height: 100vh;
+    background-image: url("wrong.jpg");
+    background-size: cover;
+    position: relative;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.button:hover {
+    transition: all 150ms;
+    transform: scale(1.2);
+    transition-duration: 500ms;
+}
+
+.my-link:hover {
+    transition: all 300ms;
+    transform: scale(1.2);
+    transition-duration: 500ms;
+}
+
+@import '~@fortawesome/fontawesome-free/css/fontawesome';
