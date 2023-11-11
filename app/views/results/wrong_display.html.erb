@@ -4,22 +4,20 @@
             <h1 class="text-1xl md:text-3xl py-5 bg-question-titlebg text-center opacity-80 rounded-full"><%= t '.title' %></h1>
         </div>
 
-        <div class="mt-10 w-3/5 opacity-80 mx-auto text-center">
-            <% unless @question.type == 'nutrition' %>
-                <div tabindex="0" class="collapse bg-base-200"> 
-                    <div class="collapse-title text-xl font-medium">
-                        <i class="fa-duotone fa-block-question"></i>
-                        ヒントを見る
-                    </div>
-                    <div class="collapse-content"> 
-                        <%= @question.hint %>
-                    </div>
+        <% if @question.type == 'compound' %>
+            <div tabindex="0" class="collapse bg-base-200"> 
+                <div class="collapse-title text-xl font-medium">
+                    <i class="fa-duotone fa-block-question"></i>
+                    ヒントを見る
                 </div>
-            <% end %>
-        </div>
+                <div class="collapse-content"> 
+                    <%= @question.hint %>
+                </div>
+            </div>
+        <% end %>
 
         <div class="bg-white py-5 pl-10 mt-10 w-3/5 opacity-80 mx-auto">
-            <%= form_with(url: "/questions/wrong_answer", method: "post", local: true) do |form| %>
+            <%= form_with(url: "/results/wrong_answer", method: "post", local: true) do |form| %>
                 <%= form.hidden_field :id, value: @question.id %>
                 <div class="pb-5 font-light">
                     <%= @question.content %>
