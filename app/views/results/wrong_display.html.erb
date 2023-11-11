@@ -3,8 +3,8 @@
         <div class="pt-10 text-question-title w-1/3 rounded-sm mx-auto">
             <h1 class="text-1xl md:text-3xl py-5 bg-question-titlebg text-center opacity-80 rounded-full"><%= t '.title' %></h1>
         </div>
-
-        <% if @question.type == 'compound' %>
+        <% if @question.type != 'Nutrition' %>
+        <div class="mt-10 w-3/5 opacity-80 mx-auto text-center">
             <div tabindex="0" class="collapse bg-base-200"> 
                 <div class="collapse-title text-xl font-medium">
                     <i class="fa-duotone fa-block-question"></i>
@@ -14,6 +14,7 @@
                     <%= @question.hint %>
                 </div>
             </div>
+        </div>
         <% end %>
 
         <div class="bg-white py-5 pl-10 mt-10 w-3/5 opacity-80 mx-auto">
@@ -22,12 +23,22 @@
                 <div class="pb-5 font-light">
                     <%= @question.content %>
                 </div>
-                <% @choices.each do |choice| %>
-                    <label>
-                        <%= form.check_box "selected_choice_ids[]", { multiple: true }, choice.id, nil %>
-                        <%= choice.choice %>
-                    </label><br>
+                <% if @question.type == 'Compound' %>
+                    <% @choices.each do |choice| %>
+                        <label>
+                            <%= form.check_box "selected_choice_ids[]", { multiple: true }, choice.id, nil %>
+                            <%= choice.choice %>
+                        </label><br>
+                    <% end %>
+                <% else %>
+                    <% @choices.each do |choice| %>
+                        <label>
+                            <%= form.radio_button :selected_choice_id, choice.id %>
+                            <%= choice.choice %>
+                        </label><br>
+                    <% end %>
                 <% end %>
+
                 <div class="mt-5 text-center">
                     <%= submit_tag '回答', class: 'btn btn-danger mx-1 bg-button-color hover:bg-hover-color button' %>
                 </div>

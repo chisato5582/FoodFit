@@ -5,9 +5,9 @@ class ResultsController < ApplicationController
     def wrong_display
         user = current_user
         wrong_questions = Question.incorrect.pluck(:id)
-
         if wrong_questions.present?
-            @question = Question.find_by(id: wrong_questions)
+            wrong_random = wrong_questions.sample
+            @question = Question.find_by(id: wrong_random)
             @choices = @question.choices
         else
             flash[:notice] = "問題は全て解答済みです"
@@ -28,7 +28,7 @@ class ResultsController < ApplicationController
             selected_choice_ids = selected_choice_ids.flatten.map(&:to_i)
         else
             flash.now[:notice] = "選択してください"
-            render :compound_display
+            render :wrong_display
             return
         end
         
