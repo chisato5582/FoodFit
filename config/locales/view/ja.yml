@@ -82,4 +82,9 @@ ja:
       title: '問題'
     compound_explanation:
       title: '解説'
+  results:
+    wrong_display:
+      title: '問題'
+    wrong_explanation:
+      title: '解説'
 

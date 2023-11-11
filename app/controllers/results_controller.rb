@@ -5,9 +5,9 @@ class ResultsController < ApplicationController
     def wrong_display
         user = current_user
         wrong_questions = Question.incorrect.pluck(:id)
-
         if wrong_questions.present?
-            @question = Question.find_by(id: wrong_questions)
+            wrong_random = wrong_questions.sample
+            @question = Question.find_by(id: wrong_random)
             @choices = @question.choices
         else
             flash[:notice] = "問題は全て解答済みです"
@@ -20,13 +20,27 @@ class ResultsController < ApplicationController
     def wrong_answer
         @question = Question.find(params[:id])
         @choices = @question.choices
+        
+        # ユーザーが選択した解答のID
+        selected_choice_ids = params[:selected_choice_ids]
 
-        case @question.type
-        when 'nutrition'
-            redirect_to nutrition_answer_questions_path(@question)
-        when 'compound'
-            redirect_to compound_answer_questions_path(@question)
+        if selected_choice_ids.present?
+            selected_choice_ids = selected_choice_ids.flatten.map(&:to_i)
+        else
+            flash.now[:notice] = "選択してください"
+            render :wrong_display
+            return
         end
+        
+        # 問題の正解のIDを取得
+        correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
+        
+        if correct_choice_ids.sort == (selected_choice_ids&.sort || [])
+            current_user.results.update(question_id: @question.id, result: 1)
+        else
+            current_user.results.update(question_id: @question.id, result: 0)
+        end
+        redirect_to wrong_explanation_results_path(id: @question.id)
     end
 
     # 回答表示
