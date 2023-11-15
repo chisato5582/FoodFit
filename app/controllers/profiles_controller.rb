@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-    before_action :set_user, only: %i[edit update show]
+    before_action :set_user, only: %i[edit update show index]
 
     def show; end
 
@@ -21,5 +21,10 @@ class ProfilesController < ApplicationController
 
     def user_params
         params.require(:user).permit(:name, :email)
+    end
+
+    def get_nutrition_data
+        nutrition_data = Question.nutrition_data(current_user)
+        render json: { nutrition_data: nutrition_data }
     end
 end
