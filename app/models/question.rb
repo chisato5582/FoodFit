@@ -7,14 +7,13 @@ class Question < ApplicationRecord
 
     scope :incorrect, -> { joins(:results).where(results: { result: false }) }
 
-    def self.nutrition_data
-        nutrition_count = Question.where(type: 'Nutrition').count
-        user_nutrition_count = Question.where(type: 'Nutrition').joins(:results).where(results: { user_id: user.id }).count
-        nutrition_true_count = Question.where(type: 'Nutrition').joins(:results).where(results: { user_id: user.id, result: true }).count
-        nutrition_true_count = (nutrition_count > 0) ? ((nutrition_true_count.to_f / nutrition_count) * 100) : 0
+    def self.nutrition_data(user)
+        nutrition_count = where(type: 'Nutrition').count
+        nutrition_true_count = joins(:results).where(results: { user_id: user.id, result: true }).count
+        nutrition_false_count = joins(:results).where(results: { user_id: user.id, result: false }).count
+        not_answer_count = nutrition_count - (nutrition_true_count + nutrition_false_count)
 
-
-        [nutrition_count, user_nutrition_count, nutrition_true_count]
+        { "正解" => nutrition_true_count, "不正解" => nutrition_false_count, "未回答" => not_answer_count }
     end
 
     def compound_data

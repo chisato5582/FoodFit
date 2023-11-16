@@ -23,8 +23,7 @@ class ProfilesController < ApplicationController
         params.require(:user).permit(:name, :email)
     end
 
-    def get_nutrition_data
-        nutrition_data = Question.nutrition_data(current_user)
-        render json: { nutrition_data: nutrition_data }
+    def nutrition_data
+        @nutrition_data = Question.nutrition_data(current_user).transform_values { |value| "#{value}%" }
     end
 end

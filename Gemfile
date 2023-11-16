@@ -84,3 +84,5 @@ gem 'rubocop-performance', require: false
 gem 'rubocop-rspec', require: false
 
 gem 'font-awesome-rails'
+gem "chartkick"
+gem 'importmap-rails'
