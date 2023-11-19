@@ -9,8 +9,8 @@ class Question < ApplicationRecord
 
     def self.nutrition_data(user)
         nutrition_count = where(type: 'Nutrition').count
-        nutrition_true_count = joins(:results).where(results: { user_id: user.id, result: true }).count
-        nutrition_false_count = joins(:results).where(results: { user_id: user.id, result: false }).count
+        nutrition_true_count = joins(:results).where(type: 'nutrition', results: { user_id: user.id, result: true }).count
+        nutrition_false_count = joins(:results).where(type: 'nutrition', results: { user_id: user.id, result: false }).count
         not_answer_count = nutrition_count - (nutrition_true_count + nutrition_false_count)
 
         { "正解" => nutrition_true_count, "不正解" => nutrition_false_count, "未回答" => not_answer_count }
@@ -18,8 +18,8 @@ class Question < ApplicationRecord
 
     def self.compound_data(user)
         compound_count = where(type: 'Compound').count
-        compound_true_count = joins(:results).where(results: { user_id: user.id, result: true }).count
-        compound_false_count = joins(:results).where(results: { user_id: user.id, result: false }).count
+        compound_true_count = joins(:results).where(type: 'compound', results: { user_id: user.id, result: true }).count
+        compound_false_count = joins(:results).where(type: 'compound', results: { user_id: user.id, result: false }).count
         not_answer_count = compound_count - (compound_true_count + compound_false_count)
 
         { "正解" => compound_true_count, "不正解" => compound_false_count, "未回答" => not_answer_count }
