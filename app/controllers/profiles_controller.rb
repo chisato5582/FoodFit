@@ -1,7 +1,10 @@
 class ProfilesController < ApplicationController
-    before_action :set_user, only: %i[edit update show]
+    before_action :set_user, only: %i[edit update show index]
 
-    def show; end
+    def show
+        @nutrition_data = Question.nutrition_data(current_user)
+        @compound_data = Question.compound_data(current_user)
+    end
 
     def edit; end
 

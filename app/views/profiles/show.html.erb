@@ -23,7 +23,25 @@
             <tr>
                 <td></td>
             </tr>
-            
         </table>
+
+
+
+
+        <section class="md:flex items-center justify-center">
+            <div class="grid place-items-center text-center">
+                <p class="md:w-1/3 md:text-2xl text-1xl py-5 bg-button-color rounded-xl" style="color: white;">栄養問題</p>
+                <div class="pb-10">
+                    <%= pie_chart @nutrition_data, donut: true, colors: ["#87AE8D", "#B77878", "#897670"] %>
+                </div>
+            </div>
+            <div class="grid place-items-center text-center">
+                <p class="md:w-1/3 md:text-2xl text-1xl py-5 bg-button-color rounded-xl" style="color: white;">食品問題</p>
+                <div class="pb-10">
+                    <%= pie_chart @compound_data, donut: true, colors: ["#87AE8D", "#B77878", "#897670"] %>
+                </div>
+            </div>
+        </section>
+
     </div>
 </div>

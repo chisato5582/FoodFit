@@ -13,3 +13,8 @@
 // Removed Sprockets Directives
 import '@fortawesome/fontawesome-free/js/all'
 import '../css/application.css'
+
+
+import "chartkick"
+import "Chart.bundle"
+import "chartkick/chart.js"

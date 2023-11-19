@@ -26,7 +26,7 @@
                 </button>
                 <ul id="menu" class="z-0 fixed top-0 left-0 w-full text-center bg-footer-color text-white font-bold translate-x-full transition ease-linear">
                     <div class="my-link">
-                        <li class="p-3"><%= link_to "マイページ", profile_path %></li>
+                        <li class="p-3"><%= link_to "マイページ", profile_path, data: {"turbolinks" => false} %></li>
                     </div>
                     <div class="my-link">
                         <li class="p-3"><%= link_to "設定", edit_profile_path %></li>
