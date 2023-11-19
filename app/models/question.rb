@@ -16,12 +16,12 @@ class Question < ApplicationRecord
         { "正解" => nutrition_true_count, "不正解" => nutrition_false_count, "未回答" => not_answer_count }
     end
 
-    def compound_data
-        user_id = current_user.id
-        compound_count = Question.where(type: 'Compound').count
-        user_compound_count =  Question.where(type: 'Compound').joins(:results).where(results: { user_id: current_user.id }).count
-        compound_true_count = Question.where(type: 'Compound').joins(:results).where(results: { user_id: current_user.id, result: true }).count
+    def self.compound_data(user)
+        compound_count = where(type: 'Compound').count
+        compound_true_count = joins(:results).where(results: { user_id: user.id, result: true }).count
+        compound_false_count = joins(:results).where(results: { user_id: user.id, result: false }).count
+        not_answer_count = compound_count - (compound_true_count + compound_false_count)
 
-        (compound_count > 0) ? ((compound_true_count.to_f / compound_count) * 100) : 0
+        { "正解" => compound_true_count, "不正解" => compound_false_count, "未回答" => not_answer_count }
     end
 end

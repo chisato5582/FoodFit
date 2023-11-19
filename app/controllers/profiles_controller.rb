@@ -1,7 +1,10 @@
 class ProfilesController < ApplicationController
     before_action :set_user, only: %i[edit update show index]
 
-    def show; end
+    def show
+        @nutrition_data = Question.nutrition_data(current_user)
+        @compound_data = Question.compound_data(current_user)
+    end
 
     def edit; end
 
@@ -21,9 +24,5 @@ class ProfilesController < ApplicationController
 
     def user_params
         params.require(:user).permit(:name, :email)
-    end
-
-    def nutrition_data
-        @nutrition_data = Question.nutrition_data(current_user).transform_values { |value| "#{value}%" }
     end
 end
