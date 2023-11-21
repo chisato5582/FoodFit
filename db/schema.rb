@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_31_143752) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_21_140550) do
   create_table "choices", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "choice", null: false
     t.boolean "correct", default: false, null: false
@@ -27,6 +27,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_31_143752) do
     t.datetime "updated_at", null: false
     t.string "type", null: false
     t.string "hint"
+  end
+
+  create_table "ranks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "rank_name", null: false
+    t.integer "response", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "results", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -53,11 +60,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_31_143752) do
     t.datetime "reset_password_email_sent_at"
     t.integer "access_count_to_reset_password_page", default: 0
     t.integer "role", default: 0, null: false
+    t.bigint "rank_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["rank_id"], name: "index_users_on_rank_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
   add_foreign_key "choices", "questions"
   add_foreign_key "results", "questions"
   add_foreign_key "results", "users"
+  add_foreign_key "users", "ranks", on_delete: :nullify
 end
