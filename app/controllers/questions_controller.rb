@@ -48,6 +48,8 @@ class QuestionsController < ApplicationController
             current_user.results.create(question_id: @question.id, result: 0)
         end
         redirect_to nutrition_explanation_questions_path(id: @question.id)
+    
+        update_rank(current_user)
     end
 
     # 解説表示アクション
@@ -106,6 +108,8 @@ class QuestionsController < ApplicationController
             current_user.results.create(question_id: @question.id, result: 0)
         end
         redirect_to compound_explanation_questions_path(id: @question.id)
+    
+        update_rank(current_user)
     end
 
     # 解説表示アクション
@@ -124,5 +128,18 @@ class QuestionsController < ApplicationController
         when 'compound_display', 'compound_explanation'
             self.class.layout 'compound'
         end
+    end
+
+    def update_rank(user)
+        # ユーザーの現在のランクを取得
+        current_rank = user.rank
+        
+        new_rank = calculate_rank(user)
+
+        # 現在のランクと同じであれば、何もせず終了
+        return if current_rank == new_rank
+
+        # 異なる場合ユーザーのランクを更新する処理
+        user.update(rank: new_rank)
     end
 end
