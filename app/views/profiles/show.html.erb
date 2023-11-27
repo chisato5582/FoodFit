@@ -2,7 +2,7 @@
     <div class="container">
         <h1 class="float-left text-2xl md:text-4xl text-button-color ml-10 md:ml-32 mt-10"><%= t '.title' %></h1>
 
-        <table class="table text-center mt-20 dark:text-black">
+        <table class="table text-center pt-10 dark:text-black">
             <tr class="text-font-color text-sm md:text-2xl">
                 <th scope="row"><%= User.human_attribute_name('name') %></th>
             </tr>
@@ -12,7 +12,7 @@
             <tr class="text-font-color text-sm md:text-2xl">
                 <th scope="row">ランク</th>
             </tr>
-            <tr>
+            <tr class="px-24 text-sm md:text-2xl">
                 <td><%= current_user.rank.rank_name if current_user.rank %></td>
             </tr>
             <!--
@@ -27,7 +27,7 @@
 
 
 
-        <section class="md:flex items-center justify-center">
+        <section class="md:flex items-center justify-center pt-20">
             <div class="grid place-items-center text-center">
                 <p class="md:w-1/3 md:text-2xl text-1xl py-5 bg-button-color rounded-xl" style="color: white;">栄養問題</p>
                 <div class="pb-10">

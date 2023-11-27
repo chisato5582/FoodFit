@@ -134,7 +134,7 @@ class QuestionsController < ApplicationController
         # ユーザーの現在のランクを取得
         current_rank = user.rank
         
-        new_rank = calculate_rank(user)
+        new_rank = Rank.calculate_rank(user)
 
         # 現在のランクと同じであれば、何もせず終了
         return if current_rank == new_rank
