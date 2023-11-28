@@ -48,8 +48,14 @@ class QuestionsController < ApplicationController
             current_user.results.create(question_id: @question.id, result: 0)
         end
         redirect_to nutrition_explanation_questions_path(id: @question.id)
-    
-        update_rank(current_user)
+        
+        #　ランク処理
+        if current_user.rank.present?
+            update_rank(current_user)
+        else
+            user_rank = Rank.calculate_rank(current_user)
+            current_user.update(rank: user_rank)
+        end
     end
 
     # 解説表示アクション
@@ -109,7 +115,13 @@ class QuestionsController < ApplicationController
         end
         redirect_to compound_explanation_questions_path(id: @question.id)
     
-        update_rank(current_user)
+        #　ランク処理
+        if current_user.rank.present?
+            update_rank(current_user)
+        else
+            user_rank = Rank.calculate_rank(current_user)
+            current_user.update(rank: user_rank)
+        end
     end
 
     # 解説表示アクション
