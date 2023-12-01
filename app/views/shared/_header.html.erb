@@ -6,22 +6,13 @@
                 <span class="ml-3 text-xl md:text-2xl font-bold">FoodFit</span>
             </a>
         </div>
-        <div class="mx-3 md:mx-6 my-link">
-            <%= link_to "問題を解く", question_tops_index_path %>
-        </div>
-        <!--
-        <div class="mx-3 md:mx-6">
-            <%= link_to "Search", "#", class: '' %>
-        </div>
-        -->
-        <!--
-        <div class="mx-3 md:mx-6">
-            <%= link_to "Rank", "#", class: '' %>
-        </div>
-        -->
-        <div class="ml-auto mr-10">
+
+        <div class="ml-auto mr-10 flex">
+            <div class="ml-auto mx-3 md:mx-6 my-link md:text-xl text-mase">
+                <%= link_to "問題を解く", question_tops_index_path %>
+            </div>
             <nav>
-                <button id="button" type="button" class="fixed z-10">
+                <button id="button" type="button" class="z-10">
                     <i id="bars" class="fa-solid fa-bars fa-xl" style="color: #1f512b;"></i>
                     <i id="xmark" class="fa-solid fa-xmark fa-xl hidden" style="color: #582d09;"></i>
                 </button>
