@@ -21,3 +21,17 @@
     transform: scale(1.2);
     transition-duration: 500ms;
 }
+
+
+.wrapper {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%; /* 修正: 画面いっぱいに広がるように */
+}

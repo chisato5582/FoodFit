@@ -13,7 +13,9 @@
 
   <body class="compound-wrapper">
     <%= render 'shared/flash_message' %>
-
+    <%= render  "shared/header" %>
     <%= yield %>
+    <div class="push"></div>
+    <%= render 'shared/footer' %>
   </body>
 </html>
