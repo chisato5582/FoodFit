@@ -28,7 +28,7 @@ module.exports = {
         "top-font":"#9D2932"
       },
       fontFamily: {
-        'title': ['Impact']
+        "HiraMinProN-W6": ["HiraMinProN-W6"]
       }
     },
   },

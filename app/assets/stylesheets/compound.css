@@ -24,3 +24,21 @@
 }
 
 @import '~@fortawesome/fontawesome-free/css/fontawesome';
+
+
+.wrapper {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%; /* 修正: 画面いっぱいに広がるように */
+}
+
+.push {
+    height: 200px;/*フッターと同じ高さに指定*/
+}
