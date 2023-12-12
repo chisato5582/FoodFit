@@ -11,4 +11,12 @@ class Result < ApplicationRecord
     def self.result_count(user)
         where(user_id: user.id, result: true).count
     end
+
+    def self.nutrition_count
+        Result.joins(:question).where(questions: { type: 'nutrition' }).count
+    end
+
+    def self.compound_count
+        Result.joins(:question).where(questions: { type: 'compound' }).count
+    end
 end
