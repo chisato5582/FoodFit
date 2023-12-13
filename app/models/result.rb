@@ -12,11 +12,12 @@ class Result < ApplicationRecord
         where(user_id: user.id, result: true).count
     end
 
-    def self.nutrition_count
-        Result.joins(:question).where(questions: { type: 'nutrition' }).count
+    # 回答した問題数の取得
+    def self.nutrition_count(user)
+        Result.joins(:question).where(questions: { type: 'nutrition' }).where(user_id: user.id).count
     end
 
-    def self.compound_count
-        Result.joins(:question).where(questions: { type: 'compound' }).count
+    def self.compound_count(user)
+        Result.joins(:question).where(questions: { type: 'compound' }).where(user_id: user.id).count
     end
 end
