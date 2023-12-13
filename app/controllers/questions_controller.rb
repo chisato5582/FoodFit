@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
             flash[:notice] = "問題は全て解答済みです"
             redirect_to question_tops_index_path
         end
+        @nutrition_count = Question.nutrition_rest_count(user)
     end
 
     # クイズの回答処理アクション
@@ -87,6 +88,7 @@ class QuestionsController < ApplicationController
             flash[:notice] = "問題は全て解答済みです"
             redirect_to question_tops_index_path
         end
+        @compound_count = Question.compound_rest_count(user)
     end
 
     # クイズの回答処理アクション
@@ -154,4 +156,10 @@ class QuestionsController < ApplicationController
         # 異なる場合ユーザーのランクを更新する処理
         user.update(rank: new_rank)
     end
+
+    # def questions_count
+    #     user = current_user
+    #     @nutrition_count = Question.nutrition_rest_count(user)
+    #     @compound_count = Question.compound_rest_count(user)
+    # end
 end

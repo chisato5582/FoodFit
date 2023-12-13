@@ -25,14 +25,15 @@ class Question < ApplicationRecord
         { "正解" => compound_true_count, "不正解" => compound_false_count, "未回答" => not_answer_count }
     end
 
-    def nutrition_rest_count
-        rest_count = Result.nutrition_count
+    # 残りの問題数の取得
+    def self.nutrition_rest_count(user)
+        rest_count = Result.nutrition_count(user)
         questions_count = Question.where(type: 'nutrition').count
         questions_count - rest_count
     end
 
-    def compound_rest_count
-        rest_count = Result.compound_count
+    def self.compound_rest_count(user)
+        rest_count = Result.compound_count(user)
         questions_count = Question.where(type: 'compound').count
         questions_count - rest_count
     end
