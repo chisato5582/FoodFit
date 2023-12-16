@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 .nutrition-wrapper {
     min-height: 100vh;
