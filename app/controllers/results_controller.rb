@@ -20,49 +20,14 @@ class ResultsController < ApplicationController
     def wrong_answer
         @question = Question.find(params[:id])
         @choices = @question.choices
-        
+      
         if @question.type == 'Compound'
-            # ユーザーが選択した解答のID
-            selected_choice_ids = params[:selected_choice_ids]
-
-            if selected_choice_ids.present?
-                selected_choice_ids = selected_choice_ids.flatten.map(&:to_i)
-            else
-                flash.now[:notice] = "選択してください"
-                render :wrong_display
-                return
-            end
-        
-            # 問題の正解のIDを取得
-            correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
-        
-            if correct_choice_ids.sort == (selected_choice_ids&.sort || [])
-                current_user.results.update(question_id: @question.id, result: 1)
-            else
-                current_user.results.update(question_id: @question.id, result: 0)
-            end
-            redirect_to wrong_explanation_results_path(id: @question.id)
+          handle_compound_question
         else
-            if params.key?(:selected_choice_id)
-                # ユーザーが選択した解答のID
-                selected_choice_id = params[:selected_choice_id].to_i
-            else
-                flash.now[:notice] = "選択してください"
-                render :wrong_display
-                return
-            end
-            
-            # 問題の正解のIDを取得
-            correct_choice_id = @question.choices.where(correct: true).pluck(:id)
-            
-            if correct_choice_id.include?(selected_choice_id)
-                current_user.results.update(question_id: @question.id, result: 1)
-            else
-                current_user.results.update(question_id: @question.id, result: 0)
-            end
-            redirect_to wrong_explanation_results_path(id: @question.id)
+          handle_non_compound_question
         end
     end
+      
 
     # 回答表示
     def wrong_explanation
@@ -75,5 +40,58 @@ class ResultsController < ApplicationController
 
     def set_layout
             self.class.layout 'wrong'
+    end
+
+    def handle_compound_question
+        selected_choice_ids = params.fetch(:selected_choice_ids, [])
+      
+        if selected_choice_ids.present?
+          selected_choice_ids = selected_choice_ids.flatten.map(&:to_i)
+        else
+          handle_no_selection
+          return
+        end
+      
+        correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
+      
+        if correct_choice_ids.sort == (selected_choice_ids&.sort || [])
+          update_user_result(1)
+        else
+          update_user_result(0)
+        end
+      
+        redirect_to_wrong_explanation
+    end
+      
+    def handle_no_selection
+        flash.now[:notice] = "選択してください"
+        render :wrong_display
+    end
+      
+    def handle_non_compound_question
+        selected_choice_id = params[:selected_choice_id].to_i
+      
+        if selected_choice_id.present?
+          handle_no_selection
+        return
+        end
+      
+        correct_choice_id = @question.choices.where(correct: true).pluck(:id)
+      
+        if correct_choice_id.include?(selected_choice_id)
+          update_user_result(1)
+        else
+          update_user_result(0)
+        end
+      
+        redirect_to_wrong_explanation
+    end
+      
+    def update_user_result(result_value)
+        current_user.results.update(question_id: @question.id, result: result_value)
+    end
+      
+    def redirect_to_wrong_explanation
+        redirect_to wrong_explanation_results_path(id: @question.id)
     end
 end
