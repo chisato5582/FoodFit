@@ -18,3 +18,4 @@ import '../css/application.css'
 import "chartkick"
 import "Chart.bundle"
 import "chartkick/chart.js"
+require("chartkick").use(require("highcharts"))

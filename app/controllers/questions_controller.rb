@@ -1,28 +1,27 @@
 class QuestionsController < ApplicationController
-
     before_action :set_layout, only: [:nutrition_display, :nutrition_explanation, :compound_display, :compound_explanation]
-
-
 
     # nutritionクイズ画面の表示アクション
     def nutrition_display
         user = current_user
         null_results = Question.where.not(id: Result.where(user_id: user.id).pluck(:question_id))
 
-        if null_results.exists?
-            @question = null_results.find_by(type: 'nutrition')
-            if @question.present?
-                @choices = @question.choices
-            else
-                flash[:notice] = "問題は全て解答済みです"
-                redirect_to question_tops_index_path
-            end
-            
-        else
+        if null_results.empty?
             @question = nil
             flash[:notice] = "問題は全て解答済みです"
             redirect_to question_tops_index_path
+            return
         end
+
+        @question = null_results.find_by(type: 'nutrition')
+        
+        if @question.blank?
+            flash[:notice] = "問題は全て解答済みです"
+            redirect_to question_tops_index_path
+            return
+        end
+
+        @choices = @question.choices
         @nutrition_count = Question.nutrition_rest_count(user)
     end
 
@@ -66,28 +65,26 @@ class QuestionsController < ApplicationController
         @result_value = result_instance.result
     end
 
-
-
-
     # compoundクイズ画面の表示アクション
     def compound_display
         user = current_user
         null_results = Question.where.not(id: Result.where(user_id: user.id).pluck(:question_id))
 
-        if null_results.exists?
-            @question = null_results.find_by(type: 'compound')
-            if @question.present?
-                @choices = @question.choices
-            else
-                flash[:notice] = "問題は全て解答済みです"
-                redirect_to question_tops_index_path
-            end
-            
-        else
-            @question = nil
+        if null_results.empty?
             flash[:notice] = "問題は全て解答済みです"
             redirect_to question_tops_index_path
+            return
         end
+
+        @question = null_results.find_by(type: 'compound')
+        
+        if @question.blank?
+            flash[:notice] = "問題は全て解答済みです"
+            redirect_to question_tops_index_path
+            return
+        end
+
+        @choices = @question.choices
         @compound_count = Question.compound_rest_count(user)
     end
 
@@ -156,10 +153,4 @@ class QuestionsController < ApplicationController
         # 異なる場合ユーザーのランクを更新する処理
         user.update(rank: new_rank)
     end
-
-    # def questions_count
-    #     user = current_user
-    #     @nutrition_count = Question.nutrition_rest_count(user)
-    #     @compound_count = Question.compound_rest_count(user)
-    # end
 end
