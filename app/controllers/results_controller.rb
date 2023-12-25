@@ -21,45 +21,47 @@ class ResultsController < ApplicationController
     @choices = @question.choices
       
     if @question.type == 'Compound'
-      # ユーザーが選択した解答のID
-      selected_choice_ids = params[:selected_choice_ids]
+      type_compound
+      # # ユーザーが選択した解答のID
+      # selected_choice_ids = params[:selected_choice_ids]
 
-      if selected_choice_ids.present?
-        selected_choice_ids = selected_choice_ids.flatten.map(&:to_i)
-      else
-        flash.now[:notice] = "選択してください"
-        render :wrong_display
-        return
-      end
+      # if selected_choice_ids.present?
+      #   selected_choice_ids = selected_choice_ids.flatten.map(&:to_i)
+      # else
+      #   flash.now[:notice] = "選択してください"
+      #   render :wrong_display
+      #   return
+      # end
       
-      # 問題の正解のIDを取得
-      correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
+      # # 問題の正解のIDを取得
+      # correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
       
-      if correct_choice_ids.sort == (selected_choice_ids&.sort || [])
-        current_user.results.update(question_id: @question.id, result: 1)
-      else
-        current_user.results.update(question_id: @question.id, result: 0)
-      end
-        redirect_to wrong_explanation_results_path(id: @question.id)
-      else
-        if params.key?(:selected_choice_id)
-          # ユーザーが選択した解答のID
-          selected_choice_id = params[:selected_choice_id].to_i
-        else
-          flash.now[:notice] = "選択してください"
-          render :wrong_display
-          return
-        end
+      # if correct_choice_ids.sort == (selected_choice_ids&.sort || [])
+      #   current_user.results.update(question_id: @question.id, result: 1)
+      # else
+      #   current_user.results.update(question_id: @question.id, result: 0)
+      # end
+      #   redirect_to wrong_explanation_results_path(id: @question.id)
+    else
+      type_other
+        # if params.key?(:selected_choice_id)
+        #   # ユーザーが選択した解答のID
+        #   selected_choice_id = params[:selected_choice_id].to_i
+        # else
+        #   flash.now[:notice] = "選択してください"
+        #   render :wrong_display
+        #   return
+        # end
           
-        # 問題の正解のIDを取得
-        correct_choice_id = @question.choices.where(correct: true).pluck(:id)
+        # # 問題の正解のIDを取得
+        # correct_choice_id = @question.choices.where(correct: true).pluck(:id)
           
-        if correct_choice_id.include?(selected_choice_id)
-          current_user.results.update(question_id: @question.id, result: 1)
-        else
-          current_user.results.update(question_id: @question.id, result: 0)
-        end
-          redirect_to wrong_explanation_results_path(id: @question.id)
+        # if correct_choice_id.include?(selected_choice_id)
+        #   current_user.results.update(question_id: @question.id, result: 1)
+        # else
+        #   current_user.results.update(question_id: @question.id, result: 0)
+        # end
+        #   redirect_to wrong_explanation_results_path(id: @question.id)
       end
   end
       
@@ -75,5 +77,49 @@ class ResultsController < ApplicationController
 
   def set_layout
     self.class.layout 'wrong'
+  end
+
+  def type_compound
+    # ユーザーが選択した解答のID
+    selected_choice_ids = params[:selected_choice_ids]
+
+    if selected_choice_ids.present?
+      selected_choice_ids = selected_choice_ids.flatten.map(&:to_i)
+    else
+      flash.now[:notice] = "選択してください"
+      render :wrong_display
+      return
+    end
+    
+    # 問題の正解のIDを取得
+    correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
+    
+    if correct_choice_ids.sort == (selected_choice_ids&.sort || [])
+      current_user.results.update(question_id: @question.id, result: 1)
+    else
+      current_user.results.update(question_id: @question.id, result: 0)
+    end
+      redirect_to wrong_explanation_results_path(id: @question.id)
+  end
+
+  def type_other
+    if params.key?(:selected_choice_id)
+      # ユーザーが選択した解答のID
+      selected_choice_id = params[:selected_choice_id].to_i
+    else
+      flash.now[:notice] = "選択してください"
+      render :wrong_display
+      return
+    end
+      
+    # 問題の正解のIDを取得
+    correct_choice_id = @question.choices.where(correct: true).pluck(:id)
+      
+    if correct_choice_id.include?(selected_choice_id)
+      current_user.results.update(question_id: @question.id, result: 1)
+    else
+      current_user.results.update(question_id: @question.id, result: 0)
+    end
+      redirect_to wrong_explanation_results_path(id: @question.id)
   end
 end
