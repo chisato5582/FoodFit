@@ -1,3 +1,4 @@
+inherit_from: .rubocop_todo.yml
 
 require:
   - rubocop-rails
@@ -31,7 +32,7 @@ Metrics/MethodLength:
   Max: 30
 
 Metrics/ClassLength:
-  Max: 100  # 適切な値に設定してください
+  Max: 100
 
 
 Style/EmptyMethod:
@@ -50,4 +51,12 @@ Style/SymbolArray:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+Layout/FirstHashElementIndentation:
   Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: false
+
