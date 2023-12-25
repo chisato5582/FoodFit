@@ -25,7 +25,9 @@ module.exports = {
         "question-title":"#F2F2F2",
         "question-titlebg":"#6C6363",
         "top-exbg":"#DC9797",
-        "top-font":"#9D2932"
+        "top-font":"#9D2932",
+        "success-color":"#007042",
+        "failure-color":"#d66565"
       },
       fontFamily: {
         "HiraMinProN-W6": ["HiraMinProN-W6"]
