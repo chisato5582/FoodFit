@@ -53,5 +53,6 @@ Rails.application.routes.draw do
   end
 
   resources :external_pages, only: %i[index]
+  resources :terms, only: %i[index]
 
 end
