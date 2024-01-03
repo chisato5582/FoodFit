@@ -14,6 +14,10 @@
             <%= @question.reason %>
         </div>
         <div class="mt-5">
+            <h2 class="text-2xl text-button-color">ヒント</h2>
+            <%= @question.hint %>
+        </div>
+        <div class="mt-5">
             <h2 class="text-2xl text-button-color">選択肢</h2>
             <% @question.choices.each do |choice| %> 
                 <%= choice.choice %> - <%= choice.correct ? "正解" : "不正解" %><br>
@@ -23,6 +27,7 @@
             <%= button_to '削除', admin_question_path(@question), class: 'btn btn-danger mx-1 my-5', method: :delete, data: { confirm: '削除します' } %>
             <%= link_to '一覧', admin_questions_path, class: 'btn btnprimary mx-1 my-5' %>
             <%= link_to '作成', new_admin_question_path, class: 'btn btnprimary mx-1 my-5' %>
+            <%= link_to '編集', edit_admin_question_path, class: 'btn btnprimary mx-1 my-5' %>
         </div>
     </div>
 </div>

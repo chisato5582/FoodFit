@@ -1,9 +1,27 @@
-
-<div class="container">
-    <div class="pt-10 text-question-title w-1/3 rounded-sm mx-auto">
-        <h1 class="text-1xl md:text-3xl py-5 bg-question-titlebg text-center opacity-80 rounded-full"><%= t '.title' %></h1>
-    </div>
-    <div>
-        <%= render partial: 'shared/display', locals: { question: @question, choices: @choices } %>
+<div class="flex items-center justify-center">
+    <div class="container dark:text-blackdark:text-black">
+        <div class="pt-10 text-question-title w-1/3 rounded-sm mx-auto">
+            <h1 class="text-1xl md:text-3xl py-5 bg-question-titlebg text-center opacity-80 rounded-full"><%= t '.title' %></h1>
+        </div>
+        <div class="pt-5 w-1/3 rounded-sm mx-auto font-medium text-top-font">
+            <h1 class="text-sm md:text-2xl py-5 text-center">残り<%= @nutrition_count %>問</h1>
+        </div>
+        <div class="bg-white py-5 pl-10 mt-10 w-3/5 opacity-80 mx-auto">
+            <%= form_with(url: "/questions/nutrition_answer", method: "post", local: true) do |form| %>
+                <%= form.hidden_field :id, value: @question.id %>
+                <div class="pb-5 font-light">
+                    <%= @question.content %>
+                </div>
+                <% @choices.each do |choice| %>
+                    <label>
+                        <%= form.radio_button :selected_choice_id, choice.id %>
+                        <%= choice.choice %>
+                    </label><br>
+                <% end %>
+                <div class="mt-5 text-center">
+                    <%= submit_tag '回答', class: 'btn btn-primary bg-button-color hover:bg-hover-color text-button-font border-none rounded-full py-5 px-10 button' %>
+                </div>
+            <% end %>
+        </div>
     </div>
 </div>

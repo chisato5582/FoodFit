@@ -3,6 +3,7 @@ class User < ApplicationRecord
   enum role: { general: 0, admin: 1 }
 
   has_many :results, dependent: :destroy
+  belongs_to :rank, optional: true 
 
   validates :password, length: { minimum: 4 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

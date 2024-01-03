@@ -26,3 +26,32 @@
     background-position: center;
 }
 
+@import '~@fortawesome/fontawesome-free/css/fontawesome';
+
+.button:hover {
+    transition: all 150ms;
+    transform: scale(1.2);
+    transition-duration: 500ms;
+}
+
+.my-link:hover {
+    transition: all 300ms;
+    transform: scale(1.2);
+    transition-duration: 500ms;
+}
+
+.wrapper {
+    min-height: 100vh;
+    position: relative;/*←相対位置*/
+    padding-bottom: 120px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%; /* 修正: 画面いっぱいに広がるように */
+}
+.push {
+    height: 200px;/*フッターと同じ高さに指定*/
+}

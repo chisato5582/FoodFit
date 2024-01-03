@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'external_pages/show'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   get 'password_resets/new'
@@ -42,5 +43,16 @@ Rails.application.routes.draw do
       get 'compound_explanation'
     end
   end
+
+  resources :results do
+    collection do
+      get 'wrong_display'
+      post 'wrong_answer'
+      get 'wrong_explanation'
+    end
+  end
+
+  resources :external_pages, only: %i[index]
+  resources :terms, only: %i[index]
 
 end

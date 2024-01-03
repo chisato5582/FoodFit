@@ -1,7 +1,7 @@
 <div>
     <div class="container text-center mx-auto">
-        <h1 class="text-button-color text-4xl text-center pt-28 md:text-7xl lg:text-7xl">FoodFit</h1>
-        <h2 class="text-button-color text-2xl text-center pt-12 md:text-3xl lg:text-3xl"><%= t '.explanation' %></h2>
+        <h1 class="text-top-font text-4xl text-center pt-28 md:text-7xl lg:text-7xl font-HiraMinProN-W6">FoodFit</h1>
+        <h2 class="text-top-font text-2xl text-center pt-12 md:text-3xl lg:text-3xl"><%= t '.explanation' %></h2>
 
         <div class="mt-20 dark:text-black">
             <p class="text-2xl md:text-4xl font-medium">コンセプト</p>
@@ -44,15 +44,8 @@
                 <%= image_tag "introduction3.png", size: "500x700", class: "mt-5" %>
             </div>
         </div>
-        <div class="mt-16 flex justify-center">
-            <%= link_to "使ってみる", new_user_path, class: 'btn btn-danger mx-1 bg-button-color hover:bg-hover-color' %>
+        <div class="mt-16 flex justify-center my-link">
+            <%= link_to "使ってみる", new_user_path, class: 'btn btn-primary bg-button-color hover:bg-hover-color text-button-font border-none rounded-full py-5 px-10 button' %>
         </div>
     </div>
-
-
-
-        
-
-
-
 </div>

@@ -1,21 +1,16 @@
-<div class="container">
-    <div class="pt-10 text-question-title rounded-sm mx-auto w-1/3">
-        <div class="text-1xl md:text-3xl py-5 bg-button-color text-center opacity-70 rounded-full">
-            <% if @result_value == "success" %>
-                正解！
-            <% else @result_value == "failure" %>
-                不正解
-            <% end %>
+<div class="flex items-center justify-center">
+    <div class="container">
+
+        <%= render partial: 'shared/errata' %>
+
+        <div class="bg-white py-5 pl-10 mt-10 w-3/5 opacity-70 mx-auto">
+            <div>
+                <%= @question.reason %>
+            </div>
+            <div class="flex justify-center mt-5">
+                <%= button_to '問題選択画面へ', question_tops_index_path, class: 'btn btn-primary bg-button-color hover:bg-hover-color text-button-font border-none rounded-full py-5 px-10 button', method: :get %>
+                <%= button_to '次の問題へ', compound_display_questions_path, class: 'btn btn-primary bg-button-color hover:bg-hover-color text-button-font border-none rounded-full py-5 px-10 button ml-3', method: :get %>
+            </div>
         </div>
     </div>
-    <div class="bg-white py-5 pl-10 mt-10 w-3/5 opacity-70 mx-auto">
-        <div>
-            <%= @question.reason %>
-        </div>
-        <div class="flex justify-center mt-5">
-            <%= button_to '問題選択画面へ', question_tops_index_path, class: 'btn btn-danger mx-1 bg-button-color hover:bg-hover-color', method: :get %>
-            <%= button_to '次の問題へ', compound_display_questions_path, class: 'btn btn-danger mx-1 bg-button-color hover:bg-hover-color', method: :get %>
-        </div>
-    </div>
-</div>
 </div>

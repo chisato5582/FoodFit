@@ -4,63 +4,73 @@
         <%= link_to t('.questions'), admin_questions_path %>
     </div>
     <div class="flex justify-center">
-        <%= form_with model: @question, url: admin_questions_path, local: true do |f| %>
+        <%= form_with model: @question_form, url: admin_question_path(@question_form.question_id), local: true, method: :patch do |f| %>
             <div class = 'form-group py-2'>
-                <%= f.label :content, class: "text-font-color text-3xl" %>
+                <%= f.label :content, value: @question_form.content, class: "text-font-color text-3xl" %>
                 <%= f.text_area :content,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
             </div>
             <div class = 'form-group py-2'>
-                <%= f.label :reason, class: "text-font-color text-3xl" %>
+                <%= f.label :reason, value: @question_form.reason, class: "text-font-color text-3xl" %>
                 <%= f.text_area :reason,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
+            </div>
+            <div class = 'form-group py-2'>
+                <%= f.label :hint, value: @question_form.hint, class: "text-font-color text-3xl" %>
+                <%= f.text_area :hint,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
+            </div>
+            <div class = 'form-group py-2'>
+                <%= f.label :type, class: "text-font-color text-3xl" %>
+                <%= f.select :type, options_for_select([["Nutrition", "Nutrition"], ["Compound", "Compound"]], @question_form.type), {} %>
             </div>
 
             <div class="grid grid-cols-1 divide-black-200 divide-y-4">
 
+                <%= f.fields_for :choices do |choices_form| %>
                     <div>
-                        <%= f.label :choice1, class: "text-font-color text-3xl" %>
-                        <%= f.text_field :choice1,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
+                        <%= choices_form.label :choice1, class: "text-font-color text-3xl" %>
+                        <%= choices_form.text_field :choice1, value: @parsed_hash["choice1"], class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
                         <div class='form-group py-2'>
-                            <%= f.label :correct1, class: "text-font-color text-3xl" do %>
-                                <%= @edit_choice1.choice %>
-                            <% end %>
+                            <%= choices_form.label :correct1, class: "text-font-color text-3xl" %>
+                            <%= choices_form.check_box :correct1, { checked: @parsed_hash["correct1"] }, true, false %>
                         </div>
                     </div>
-                    <div>
-                        <%= f.label :choice2, class: "text-font-color text-3xl" %>
-                        <%= f.text_field :choice2,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
-                        <div class='form-group py-2'>
-                            <%= f.label :correct2, class: "text-font-color text-3xl" %>
-                            <%= f.label :correct2, class: "text-font-color text-3xl" do %>
-                                <%= @edit_choice2.choice %>
-                            <% end %>
-                        </div>
-                    </div>
-                    <div>
-                        <%= f.label :choice3, class: "text-font-color text-3xl" %>
-                        <%= f.text_field :choice3,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
-                        <div class='form-group py-2'>
-                            <%= f.label :correct3, class: "text-font-color text-3xl" %>
-                            <%= f.label :correct3, class: "text-font-color text-3xl" do %>
-                                <%= @edit_choice3.choice %>
-                            <% end %>
-                        </div>
-                    </div>         
-                    <div>
-                        <%= f.label :choice4, class: "text-font-color text-3xl" %>
-                        <%= f.text_field :choice4,  class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
-                        <div class='form-group py-2'>
-                            <%= f.label :correct4, class: "text-font-color text-3xl" %>
-                            <%= f.label :correct4, class: "text-font-color text-3xl" do %>
-                                <%= @edit_choice4.choice %>
-                            <% end %>
-                        </div>
-                    </div>
+                <% end %>
 
+                <%= f.fields_for :choices do |choices_form| %>
+                    <div>
+                        <%= choices_form.label :choice2, class: "text-font-color text-3xl" %>
+                        <%= choices_form.text_field :choice2, value: @parsed_hash["choice2"], class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
+                        <div class='form-group py-2'>
+                            <%= choices_form.label :correct2, class: "text-font-color text-3xl" %>
+                            <%= choices_form.check_box :correct2, { checked: @parsed_hash["correct2"] }, true, false %>
+                        </div>
+                    </div>
+                <% end %>
 
+                <%= f.fields_for :choices do |choices_form| %>
+                    <div>
+                        <%= choices_form.label :choice3, class: "text-font-color text-3xl" %>
+                        <%= choices_form.text_field :choice3, value: @parsed_hash["choice3"], class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
+                        <div class='form-group py-2'>
+                            <%= choices_form.label :correct3, class: "text-font-color text-3xl" %>
+                            <%= choices_form.check_box :correct3, { checked: @parsed_hash["correct1"] }, true, false %>
+                        </div>
+                    </div>
+                <% end %>
+
+                <%= f.fields_for :choices do |choices_form| %>
+                    <div>
+                        <%= choices_form.label :choice4, class: "text-font-color text-3xl" %>
+                        <%= choices_form.text_field :choice4, value: @parsed_hash["choice4"], class: "form-control mb-3 py-2 px-10 mt-3 text-2xl" %>
+                        <div class='form-group py-2'>
+                            <%= choices_form.label :correct4, class: "text-font-color text-3xl" %>
+                            <%= choices_form.check_box :correct4, { checked: @parsed_hash["correct4"] }, true, false %>
+                        </div>
+                    </div>
+                <% end %>
             </div>
 
             <div class="form-group py-5 text-center">
-                <%= f.submit (t'defaults.register'), class: 'btn btn-primary bg-button-color hover:bg-hover-color border-none' %>
+                <%= f.submit (t'defaults.update'), class: 'btn btn-primary bg-button-color hover:bg-hover-color border-none' %>
             </div>
         <% end %>
     </div>

@@ -2,21 +2,32 @@
   "name": "app",
   "private": "true",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.3.0",
     "@tailwindcss/forms": "^0.5.6",
     "autoprefixer": "^10.4.14",
-    "daisyui": "^3.5.1",
+    "chart.js": "^4.4.0",
+    "chartkick": "^5.0.1",
     "esbuild": "^0.18.17",
+    "highcharts": "^11.2.0",
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3"
   },
   "scripts": {
-    "postinstall": "yarn build:css && yarn build:css:top && yarn build:css:nutrition && yarn build:css:compound",
+    "postinstall": "yarn build:css && yarn build:css:top && yarn build:css:nutrition && yarn build:css:compound && yarn build:css:wrong",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css --minify",
     "build:css:top": "tailwindcss -i ./app/assets/stylesheets/top.css -o ./app/assets/builds/top.css --minify",
     "build:css:nutrition": "tailwindcss -i ./app/assets/stylesheets/nutrition.css -o ./app/assets/builds/nutrition.css --minify",
-    "build:css:compound": "tailwindcss -i ./app/assets/stylesheets/compound.css -o ./app/assets/builds/compound.css --minify"
+    "build:css:compound": "tailwindcss -i ./app/assets/stylesheets/compound.css -o ./app/assets/builds/compound.css --minify",
+    "build:css:wrong": "tailwindcss -i ./app/assets/stylesheets/wrong.css -o ./app/assets/builds/wrong.css --minify"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.2",
+    "daisyui": "^3.9.4"
   }
 }

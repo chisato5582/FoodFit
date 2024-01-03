@@ -63,6 +63,10 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'rubocop', require:false
+  gem 'rubocop-rails', require:false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :test do
@@ -71,9 +75,14 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
 gem 'cssbundling-rails'
 gem "sorcery", "~> 0.16.5"
 gem 'config'
 gem 'rails-i18n'
 gem 'byebug'
 gem 'enum_help' 
+
+gem 'font-awesome-rails'
+gem "chartkick"
+gem 'importmap-rails'
