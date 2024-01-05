@@ -86,3 +86,5 @@ gem 'enum_help'
 gem 'font-awesome-rails'
 gem "chartkick"
 gem 'importmap-rails'
+
+gem "meta-tags"
