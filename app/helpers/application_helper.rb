@@ -8,16 +8,16 @@ module ApplicationHelper
             charset: 'utf-8',
             description: 'FoodFitで日常で役立つ栄養学習が手軽に行えます',
             keywords: '栄養,クイズ,食事',
-            canonical: 'request.original_url',
+            canonical: request.original_url,
             separator: '|',
             og: {
                 site_name: :site,
-                title :title,
+                title: :title,
                 description: :description,
                 type: 'website',
                 url: request.original_url,
                 image: image_url('foodfit_twitter.jpg'),
-                local: 'ja-JP'
+                local: 'ja_JP'
             },
 
             twitter: {
