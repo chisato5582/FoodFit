@@ -16,13 +16,13 @@ module ApplicationHelper
                 description: :description,
                 type: 'website',
                 url: request.original_url,
-                image: image_url('foodfit_twitter.jpg'),
+                image: image_url('ogp.jpg'),
                 local: 'ja_JP'
             },
 
             twitter: {
                 card: 'summary_large_image',
-                image: image_url('foodfit_twitter.jpg')
+                image: image_url('ogp.jpg')
             }
         }
     end
