@@ -1,6 +1,7 @@
 class TopsController < ApplicationController
-    layout 'top'
-    skip_before_action :require_login, only: %i[index]
+  layout 'top'
+  skip_before_action :require_login, only: %i[index]
 
-    def index; end
+  def index
+  end
 end

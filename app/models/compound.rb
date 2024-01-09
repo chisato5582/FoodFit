@@ -1,3 +1,2 @@
 class Compound < Question
-
 end
