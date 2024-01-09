@@ -1,32 +1,31 @@
 class ResultsController < ApplicationController
-    before_action :set_layout, only: [:wrong_display, :wrong_explanation]
+  before_action :set_layout, only: [:wrong_display, :wrong_explanation]
 
-    # クイズ表示
+  # クイズ表示
   def wrong_display
     user = current_user
     wrong_questions = Question.incorrect.pluck(:id)
     if wrong_questions.present?
-        wrong_random = wrong_questions.sample
-        @question = Question.find_by(id: wrong_random)
-        @choices = @question.choices
+      wrong_random = wrong_questions.sample
+      @question = Question.find_by(id: wrong_random)
+      @choices = @question.choices
     else
-        flash[:notice] = "問題は全て解答済みです"
-        redirect_to question_tops_index_path
+      flash[:notice] = '問題は全て解答済みです'
+      redirect_to question_tops_index_path
     end
   end
 
-    # クイズ回答
+  # クイズ回答
   def wrong_answer
     @question = Question.find(params[:id])
     @choices = @question.choices
-      
+
     if @question.type == 'Compound'
       type_compound
     else
       type_other
-      end
+    end
   end
-      
 
   # 回答表示
   def wrong_explanation
@@ -35,7 +34,7 @@ class ResultsController < ApplicationController
     @result_value = result_instance.result
   end
 
-    private
+  private
 
   def set_layout
     self.class.layout 'wrong'
@@ -48,20 +47,20 @@ class ResultsController < ApplicationController
     if selected_choice_ids.present?
       selected_choice_ids = selected_choice_ids.flatten.map(&:to_i)
     else
-      flash.now[:notice] = "選択してください"
+      flash.now[:notice] = '選択してください'
       render :wrong_display
       return
     end
-    
+
     # 問題の正解のIDを取得
     correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
-    
+
     if correct_choice_ids.sort == (selected_choice_ids&.sort || [])
       current_user.results.update(question_id: @question.id, result: 1)
     else
       current_user.results.update(question_id: @question.id, result: 0)
     end
-      redirect_to wrong_explanation_results_path(id: @question.id)
+    redirect_to wrong_explanation_results_path(id: @question.id)
   end
 
   def type_other
@@ -69,19 +68,19 @@ class ResultsController < ApplicationController
       # ユーザーが選択した解答のID
       selected_choice_id = params[:selected_choice_id].to_i
     else
-      flash.now[:notice] = "選択してください"
+      flash.now[:notice] = '選択してください'
       render :wrong_display
       return
     end
-      
+
     # 問題の正解のIDを取得
     correct_choice_id = @question.choices.where(correct: true).pluck(:id)
-      
+
     if correct_choice_id.include?(selected_choice_id)
       current_user.results.update(question_id: @question.id, result: 1)
     else
       current_user.results.update(question_id: @question.id, result: 0)
     end
-      redirect_to wrong_explanation_results_path(id: @question.id)
+    redirect_to wrong_explanation_results_path(id: @question.id)
   end
 end

@@ -1,3 +1,4 @@
 class ExternalPagesController < ApplicationController
-  def index; end
+  def index
+  end
 end

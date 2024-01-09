@@ -1,10 +1,4 @@
 class RanksController < ApplicationController
-    def show; end
-
-    private
-
-
-
-
-
+  def show
+  end
 end
