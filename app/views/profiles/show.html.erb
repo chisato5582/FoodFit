@@ -1,15 +1,15 @@
 <div class="flex items-center justify-center">
     <div class="container">
-        <h1 class="float-left text-2xl md:text-4xl text-button-color ml-10 md:ml-32 mt-10"><%= t '.title' %></h1>
+        <h1 class="float-left text-2xl md:text-4xl text-top-font ml-10 md:ml-32 mt-10 font-semibold"><%= t '.title' %></h1>
 
         <table class="table text-center pt-10 dark:text-black">
-            <tr class="text-font-color text-sm md:text-2xl">
+            <tr class="text-top-font text-sm md:text-2xl">
                 <th scope="row"><%= User.human_attribute_name('name') %></th>
             </tr>
             <tr class="px-24 text-sm md:text-2xl">
                 <td><%= current_user.name %></td>
             </tr>
-            <tr class="text-font-color text-sm md:text-2xl">
+            <tr class="text-top-font text-sm md:text-2xl">
                 <th scope="row">ランク</th>
             </tr>
             <tr class="px-24 text-sm md:text-2xl">
@@ -24,18 +24,17 @@
             </tr> -->
         </table>
 
-
         <section class="md:flex items-center justify-center pt-20">
             <div class="grid place-items-center text-center">
                 <p class="md:w-1/3 md:text-2xl text-1xl py-5 bg-button-color rounded-xl" style="color: white;">栄養問題</p>
                 <div class="pb-10">
-                    <%= pie_chart @nutrition_data, donut: true, colors: ["#87AE8D", "#B77878", "#897670"] %>
+                    <%= pie_chart @nutrition_data, donut: true, colors: ["#B77878", "#87AE8D", "#897670"] %>
                 </div>
             </div>
             <div class="grid place-items-center text-center">
                 <p class="md:w-1/3 md:text-2xl text-1xl py-5 bg-button-color rounded-xl" style="color: white;">食品問題</p>
                 <div class="pb-10">
-                    <%= pie_chart @compound_data, donut: true, colors: ["#87AE8D", "#B77878", "#897670"] %>
+                    <%= pie_chart @compound_data, donut: true, colors: ["#B77878", "#87AE8D", "#897670"] %>
                 </div>
             </div>
         </section>
