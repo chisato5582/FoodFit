@@ -6,45 +6,87 @@ require:
   - rubocop-rspec
 
 AllCops:
+  # 除外するディレクトリ
   Exclude:
     - "vendor/**/*"
     - "db/**/*"
     - "config/**/*"
     - "bin/*"
     - "node_modules/**/*"
+    - "Gemfile"
+    - "log/**/*"
+    - "tmp/**/*"
 
+
+  # 最新のルールを適用する
+  NewCops: enable
+
+  # 何のルールに引っかかったか表示
+  DisplayCopNames: true
+
+
+# 以下ルールのカスタマイズ
+
+# 1行当たりの文字数
 Layout/LineLength:
   Enabled: false
-  AllowedPatterns:
-    - "Rakefile"
-    - "spec/rails_helper.rb"
-    - "spec/spec_helper.rb"
-    
 
-
-Metrics/AbcSize:
-  Max: 50
-
-Metrics/PerceivedComplexity:
-  Max: 8
-
-Metrics/MethodLength:
-  Max: 30
-
-Metrics/ClassLength:
-  Max: 100
-
-
-Style/EmptyMethod:
-  EnforcedStyle: expanded
-
-Style/ClassAndModuleChildren:
+Metrics:
   Enabled: false
 
+# 一行あたりの文字数
+Layout/LineLength:
+  Enabled: false
+
+# メソッドの改行ルール
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+# 日本語にコメントを許可
 Style/AsciiComments:
   Enabled: false
 
+# クラスにコメントを残さなくても良い
 Style/Documentation:
+  Enabled: false
+
+# コントローラ等のモジュールをネストしての宣言
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# ガード節の提案（難しいので一旦false）
+Style/GuardClause:
+  Enabled: false
+
+# 文字列のダブルクォートチェック
+Style/StringLiterals:
+  Enabled: false
+
+# 変数名に数字を許可
+Naming/VariableNumber:
+  Enabled: false
+
+# = と == の指摘
+Lint/AssignmentInCondition:
+  Enabled: false
+
+# メソッド名等の命名の指摘
+Naming/PredicateName:
+  Enabled: false
+
+# 未i18nのチェック
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+# before_actionの際の未定義メソッドのチェック（deviseとの兼ね合いで一旦false）
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+# 空のメソッド
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Style/AsciiComments:
   Enabled: false
 
 Style/SymbolArray:
@@ -57,6 +99,20 @@ Style/FrozenStringLiteralComment:
 Layout/FirstHashElementIndentation:
   Enabled: false
 
+Style/HashEachMethods:
+  Enabled: false
+
 Style/HashTransformKeys:
   Enabled: false
 
+Style/HashTransformValues:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/WhileUntilModifier:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false

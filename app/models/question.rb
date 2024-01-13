@@ -7,7 +7,6 @@ class Question < ApplicationRecord
 
   scope :incorrect, -> { joins(:results).where(results: { result: false }) }
 
-
   # マイステータス、円グラフのデータ抽出
   def self.nutrition_data(user)
     nutrition_count = where(type: 'Nutrition').count
