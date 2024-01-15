@@ -4,7 +4,8 @@ class QuestionsController < ApplicationController
   # nutritionクイズ画面の表示アクション
   def nutrition_display
     user = current_user
-    null_results = Question.where.not(id: Result.where(user_id: user.id).pluck(:question_id))
+    # null_results = Question.where.not(id: Result.where(user_id: user.id).pluck(:question_id))
+    null_results = Question.where.not(id: Result.where(user_id: user.id).select(:question_id))
 
     if null_results.empty?
       @question = nil
@@ -40,7 +41,8 @@ class QuestionsController < ApplicationController
     end
 
     # 問題の正解のIDを取得
-    correct_choice_id = @question.choices.where(correct: true).pluck(:id)
+    # correct_choice_id = @question.choices.where(correct: true).pluck(:id)
+    correct_choice_id = @question.choices.where(correct: true).select(:id)
 
     if correct_choice_id.include?(selected_choice_id)
       current_user.results.create(question_id: @question.id, result: 1)
@@ -68,8 +70,9 @@ class QuestionsController < ApplicationController
   # compoundクイズ画面の表示アクション
   def compound_display
     user = current_user
-    null_results = Question.where.not(id: Result.where(user_id: user.id).pluck(:question_id))
-
+    # null_results = Question.where.not(id: Result.where(user_id: user.id).pluck(:question_id))
+    null_results = Question.where.not(id: Result.where(user_id: user.id).select(:question_id))
+    
     if null_results.empty?
       flash[:notice] = '問題は全て解答済みです'
       redirect_to question_tops_index_path
@@ -105,7 +108,8 @@ class QuestionsController < ApplicationController
     end
 
     # 問題の正解のIDを取得
-    correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
+    # correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
+    correct_choice_ids = @question.choices.where(correct: true).select(:id)
 
     if correct_choice_ids.sort == (selected_choice_ids&.sort || [])
       current_user.results.create(question_id: @question.id, result: 1)

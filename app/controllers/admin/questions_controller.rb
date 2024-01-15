@@ -6,6 +6,10 @@ class Admin::QuestionsController < Admin::BaseController
     @question = QuestionCreateForm.new
   end
 
+  def index
+    @questions = Question.all
+  end
+
   def create
     @question = QuestionCreateForm.new(question_params)
 
@@ -24,10 +28,6 @@ class Admin::QuestionsController < Admin::BaseController
       flash.now[:danger] = '問題の作成に失敗しました'
       render :new
     end
-  end
-
-  def index
-    @questions = Question.all
   end
 
   def show
@@ -51,7 +51,8 @@ class Admin::QuestionsController < Admin::BaseController
             choice4: edit_question.choices.fourth.choice,
             correct4: edit_question.choices.fourth.correct
         })
-    hash = eval(@question_form.choices)
+    # hash = eval(@question_form.choices)
+    hash = JSON.parse(@question_form.choices)
     @parsed_hash = JSON.parse(hash.to_json, symbolize_name: true)
   end
 

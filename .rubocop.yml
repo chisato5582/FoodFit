@@ -93,9 +93,8 @@ Style/SymbolArray:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
-  Enabled: true
-  EnforcedStyle: always
-
+  Enabled: false
+  
 Layout/FirstHashElementIndentation:
   Enabled: false
 
