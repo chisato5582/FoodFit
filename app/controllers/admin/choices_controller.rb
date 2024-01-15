@@ -3,10 +3,10 @@ class Admin::ChoicesController < Admin::BaseController
     @choice = Choice.new
   end
 
-  def create
+  def edit
   end
 
-  def edit
+  def create
   end
 
   def update

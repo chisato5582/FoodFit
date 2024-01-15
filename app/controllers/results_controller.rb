@@ -3,7 +3,7 @@ class ResultsController < ApplicationController
 
   # クイズ表示
   def wrong_display
-    user = current_user
+    current_user
     wrong_questions = Question.incorrect.pluck(:id)
     if wrong_questions.present?
       wrong_random = wrong_questions.sample
