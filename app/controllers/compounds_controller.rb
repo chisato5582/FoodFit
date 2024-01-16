@@ -6,7 +6,7 @@ class CompoundsController < ApplicationController
     user = current_user
     # null_results = Question.where.not(id: Result.where(user_id: user.id).pluck(:question_id))
     null_results = Question.where.not(id: Result.where(user_id: user.id).select(:question_id))
-    
+
     if null_results.exists?
       @question = @null_results.find_by(type: 'compound')
       if @question.present?

@@ -72,7 +72,7 @@ class QuestionsController < ApplicationController
     user = current_user
     # null_results = Question.where.not(id: Result.where(user_id: user.id).pluck(:question_id))
     null_results = Question.where.not(id: Result.where(user_id: user.id).select(:question_id))
-    
+
     if null_results.empty?
       flash[:notice] = '問題は全て解答済みです'
       redirect_to question_tops_index_path

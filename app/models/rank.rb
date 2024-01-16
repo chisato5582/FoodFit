@@ -10,7 +10,7 @@ class Rank < ApplicationRecord
     result_count = Result.result_count(user)
 
     # 　ランク一覧をデータベースから取得
-    #ranks = Rank.all.order(response: :asc)
+    # ranks = Rank.all.order(response: :asc)
     ranks = Rank.order(response: :asc)
     ranks.each do |rank|
       if rank.response >= result_count
