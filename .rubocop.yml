@@ -115,3 +115,6 @@ Style/WhileUntilModifier:
 
 Bundler/OrderedGems:
   Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
