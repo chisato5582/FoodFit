@@ -4,7 +4,6 @@ class CompoundsController < ApplicationController
   # compoundクイズ画面の表示アクション
   def compound_display
     user = current_user
-    # null_results = Question.where.not(id: Result.where(user_id: user.id).pluck(:question_id))
     null_results = Question.where.not(id: Result.where(user_id: user.id).select(:question_id))
 
     if null_results.exists?

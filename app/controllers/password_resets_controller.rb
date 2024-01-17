@@ -24,7 +24,6 @@ class PasswordResetsController < ApplicationController
     if @user.change_password(params[:user][:password])
       redirect_to login_path, notice: (t '.success')
     else
-      # flash.now[:danger] = (t '.fail')
       render :edit
     end
   end
