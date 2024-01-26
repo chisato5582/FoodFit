@@ -40,7 +40,8 @@ class QuestionsController < ApplicationController
     end
 
     # 問題の正解のIDを取得
-    correct_choice_id = @question.choices.where(correct: true).select(:id)
+    # correct_choice_id = @question.choices.where(correct: true).select(:id)
+    correct_choice_id = @question.choices.where(correct: true).pluck(:id)
 
     if correct_choice_id.include?(selected_choice_id)
       current_user.results.create(question_id: @question.id, result: 1)
@@ -105,7 +106,8 @@ class QuestionsController < ApplicationController
     end
 
     # 問題の正解のIDを取得
-    correct_choice_ids = @question.choices.where(correct: true).select(:id)
+    # correct_choice_ids = @question.choices.where(correct: true).select(:id)
+    correct_choice_ids = @question.choices.where(correct: true).pluck(:id)
 
     if correct_choice_ids.sort == (selected_choice_ids&.sort || [])
       current_user.results.create(question_id: @question.id, result: 1)
