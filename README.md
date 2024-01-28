@@ -1,4 +1,8 @@
 # FoodFit
+[![Image from Gyazo](https://i.gyazo.com/f342be6d5897e85b0a014a892cbd722d.png)](https://gyazo.com/f342be6d5897e85b0a014a892cbd722d)
+
+## サービスURL
+https://my-food-fit-app-3a23588e4e56.herokuapp.com/
 
 ## サービス概要
 栄養についてクイズ形式で学習できるアプリ。
@@ -45,6 +49,17 @@
 * グラフ機能（過去に回答した問題数と、正解率がグラフで確認できる）
 * 間違えた問題の復習機能
 
+## 使用技術
+| Category | Technology Stack |
+| :----: | :----: |
+| フロントエンド | JavaScript |
+| サーバーサイド | Ruby 3.2.2 Rails 7.0.4 |
+| CSSフレームワーク | Tailwind 3系 |
+| Webアプリケーションサーバー | Heroku |
+| データベースサーバー | MySQL |
+| VCS | GitHub |
+| デザイン | Figma |
+| その他 | GitHub, drawio |
 
 ## 画面遷移図
 [画面遷移図](
